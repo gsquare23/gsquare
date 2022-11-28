@@ -1,0 +1,24 @@
+2022-11-28 14:51:20 INFO  Log:10 - =====================================verifyTitle TEST START=========================================
+2022-11-28 14:51:20 INFO  Log:15 - =====================================verifyTitle TEST END=========================================
+2022-11-28 14:51:31 INFO  Log:10 - =====================================verifyPageHeader TEST START=========================================
+2022-11-28 14:51:31 INFO  Log:22 - -------SEARCHBOX FUNCTIONALITY START ------
+2022-11-28 14:51:36 INFO  Log:22 - -------SEARCHBOX FUNCTIONALITY END ------
+2022-11-28 14:51:36 INFO  Log:22 - -------CARTButton FUNCTIONALITY START ------
+2022-11-28 14:51:36 INFO  Log:22 - -------CARTButton FUNCTIONALITY END ------
+2022-11-28 14:51:36 INFO  Log:22 - -------userButton FUNCTIONALITY START ------
+2022-11-28 14:51:36 INFO  Log:22 - -------userButton FUNCTIONALITY END ------
+2022-11-28 14:51:36 INFO  Log:22 - -------Logo FUNCTIONALITY START ------
+2022-11-28 14:51:37 INFO  Log:22 - -------Logo FUNCTIONALITY END ------
+2022-11-28 14:51:37 INFO  Log:15 - =====================================verifyPageHeader TEST END=========================================
+2022-11-28 14:51:41 INFO  Log:10 - =====================================verifyDirections TEST START=========================================
+2022-11-28 14:51:41 INFO  Log:22 - ----Verifyine the directions ---
+2022-11-28 14:51:44 INFO  Log:22 - Checking the content for Directions
+2022-11-28 14:51:44 INFO  Log:22 - Nutrition per Saving lists
+2022-11-28 14:51:44 INFO  Log:15 - =====================================verifyDirections TEST END=========================================
+2022-11-28 14:51:56 INFO  Log:10 - =====================================verifyBlog TEST START=========================================
+2022-11-28 14:51:56 INFO  Log:22 - ----Verifyine the blog title----
+2022-11-28 14:51:58 INFO  Log:22 - ----Verifyine the blog title description----
+2022-11-28 14:51:58 INFO  Log:22 - ----Verifying the Ingredients List ----
+2022-11-28 14:52:03 INFO  Log:22 - ---Ingredients List verification----
+2022-11-28 14:52:03 INFO  Log:22 - ----Image is displayed or not ----
+2022-11-28 14:52:03 INFO  Log:15 - =====================================verifyBlog TEST END=========================================
