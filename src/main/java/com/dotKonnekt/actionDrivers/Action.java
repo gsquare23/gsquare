@@ -749,7 +749,7 @@ public class Action extends BaseClass  {
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	}
 	 
-	public static void explicitWait(WebDriver driver, WebElement element, Duration timeOut ) {
+	public static void explicitWait(WebDriver driver, WebElement element, Duration  timeOut ) {
 		WebDriverWait wait = new WebDriverWait(driver,timeOut);
 		wait.until(ExpectedConditions.visibilityOf(element));
 	}

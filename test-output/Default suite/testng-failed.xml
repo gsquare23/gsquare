@@ -3,15 +3,14 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.dotKonnekt.tests.RecipePageTest">
+      <class name="com.dotKonnekt.tests.RecipePage3">
         <methods>
-          <include name="setup"/>
-          <include name="verifyDirections"/>
-          <include name="tearDown"/>
+          <include name="recipePagesetUp" invocation-numbers="0"/>
+          <include name="teardown"/>
           <include name="flush"/>
           <include name="loadConfig"/>
         </methods>
-      </class> <!-- com.dotKonnekt.tests.RecipePageTest -->
+      </class> <!-- com.dotKonnekt.tests.RecipePage3 -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

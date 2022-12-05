@@ -4,17 +4,19 @@
   <listeners>
     <listener class-name="com.dotKonnekt.utility.ListenersClass"/>
   </listeners>
-  <test thread-count="5" name="Test(failed)">
+  <test thread-count="5" name="RecipeTest(failed)">
+    <parameter name="browser" value="Chrome"/>
+    <parameter name="Url" value="Recipe"/>
     <classes>
-      <class name="com.dotKonnekt.tests.RecipePageTest">
+      <class name="com.dotKonnekt.tests.RecipePage2">
         <methods>
           <include name="setup"/>
-          <include name="verifyBlog"/>
-          <include name="flush"/>
           <include name="tearDown"/>
+          <include name="verifyTitle" invocation-numbers="1"/>
+          <include name="flush"/>
           <include name="loadConfig"/>
         </methods>
-      </class> <!-- com.dotKonnekt.tests.RecipePageTest -->
+      </class> <!-- com.dotKonnekt.tests.RecipePage2 -->
     </classes>
-  </test> <!-- Test(failed) -->
+  </test> <!-- RecipeTest(failed) -->
 </suite> <!-- Failed suite [Suite] -->
