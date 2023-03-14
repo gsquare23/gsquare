@@ -1,16 +1,189 @@
-2022-12-05 17:10:20 INFO  Log:10 - ===================================== TEST START=========================================
-2022-12-05 17:10:24 INFO  Log:22 - Verfying the title of the Page
-2022-12-05 17:10:24 INFO  Log:10 - =====================================verifyPageHeader TEST START=========================================
-2022-12-05 17:10:24 INFO  Log:22 - -------SEARCHBOX FUNCTIONALITY START ------
-2022-12-05 17:10:24 INFO  Log:22 - -------SEARCHBOX FUNCTIONALITY END ------
-2022-12-05 17:10:24 INFO  Log:22 - -------CARTButton FUNCTIONALITY START ------
-2022-12-05 17:10:24 INFO  Log:22 - -------CARTButton FUNCTIONALITY END ------
-2022-12-05 17:10:24 INFO  Log:22 - -------userButton FUNCTIONALITY START ------
-2022-12-05 17:10:24 INFO  Log:22 - -------userButton FUNCTIONALITY END ------
-2022-12-05 17:10:24 INFO  Log:22 - -------Logo FUNCTIONALITY START ------
-2022-12-05 17:10:24 INFO  Log:22 - -------Logo FUNCTIONALITY END ------
-2022-12-05 17:10:24 INFO  Log:15 - =====================================verifyPageHeader TEST END=========================================
-2022-12-05 17:10:24 INFO  Log:22 - Author Name Verification
-2022-12-05 17:10:25 INFO  Log:22 - Verfying the Category List
-2022-12-05 17:10:25 INFO  Log:22 - -----Veryfying the blog title--------
-2022-12-05 17:10:25 INFO  Log:22 - ------vERYFYING THE INGREDIENTS LIST--------
+2023-03-14 18:22:11 INFO  Log:10 - =====================================BlogPage_BlogPageElements TEST START=========================================
+2023-03-14 18:22:11 INFO  Log:22 - Verfying the BlogPage List
+2023-03-14 18:22:19 INFO  Log:22 - ChromeBrowser Launch is successfully Completed
+2023-03-14 18:22:19 INFO  Log:22 - Successfully verified that all the category elements are in correct form
+2023-03-14 18:22:19 INFO  Log:15 - =====================================-----------BlogPage_BlogPageElements--------- TEST END=========================================
+2023-03-14 18:22:19 INFO  Log:10 - =====================================BlogPage_BlogPageElements TEST START=========================================
+2023-03-14 18:22:19 INFO  Log:22 - Verfying the BlogPage List
+2023-03-14 18:22:27 INFO  Log:22 - FirefoxBrowser Launch is successfully Completed
+2023-03-14 18:22:27 INFO  Log:22 - Successfully verified that all the category elements are in correct form
+2023-03-14 18:22:27 INFO  Log:15 - =====================================-----------BlogPage_BlogPageElements--------- TEST END=========================================
+2023-03-14 18:22:28 INFO  Log:10 - =====================================BlogPage_BlogPageElements TEST START=========================================
+2023-03-14 18:22:28 INFO  Log:22 - Verfying the BlogPage List
+2023-03-14 18:22:37 INFO  Log:22 - EdgeBrowser Launch is successfully Completed
+2023-03-14 18:22:38 INFO  Log:22 - Successfully verified that all the category elements are in correct form
+2023-03-14 18:22:38 INFO  Log:15 - =====================================-----------BlogPage_BlogPageElements--------- TEST END=========================================
+2023-03-14 18:22:38 INFO  Log:10 - =====================================-----------BlogPage_BlogVideoVerification    Starts--------- TEST START=========================================
+2023-03-14 18:22:44 INFO  Log:22 - ChromeBrowser Launch is successfully Completed
+2023-03-14 18:22:49 INFO  Log:15 - =====================================-----------BlogPage_BlogVideoVerification    Ends--------- TEST END=========================================
+2023-03-14 18:22:50 INFO  Log:10 - =====================================-----------BlogPage_BlogVideoVerification    Starts--------- TEST START=========================================
+2023-03-14 18:22:57 INFO  Log:22 - FirefoxBrowser Launch is successfully Completed
+2023-03-14 18:23:02 INFO  Log:15 - =====================================-----------BlogPage_BlogVideoVerification    Ends--------- TEST END=========================================
+2023-03-14 18:23:03 INFO  Log:10 - =====================================-----------BlogPage_BlogVideoVerification    Starts--------- TEST START=========================================
+2023-03-14 18:23:09 INFO  Log:22 - EdgeBrowser Launch is successfully Completed
+2023-03-14 18:23:20 INFO  Log:10 - =====================================-----------BlogPage_BreadCrumbVerification    Starts--------- TEST START=========================================
+2023-03-14 18:23:26 INFO  Log:22 - ChromeBrowser Launch is successfully Completed
+2023-03-14 18:23:29 INFO  Log:15 - =====================================-----------BlogPage_BreadCrumbVerification    Ends--------- TEST END=========================================
+2023-03-14 18:23:29 INFO  Log:10 - =====================================-----------BlogPage_BreadCrumbVerification    Starts--------- TEST START=========================================
+2023-03-14 18:23:36 INFO  Log:22 - FirefoxBrowser Launch is successfully Completed
+2023-03-14 18:23:41 INFO  Log:15 - =====================================-----------BlogPage_BreadCrumbVerification    Ends--------- TEST END=========================================
+2023-03-14 18:23:43 INFO  Log:10 - =====================================-----------BlogPage_BreadCrumbVerification    Starts--------- TEST START=========================================
+2023-03-14 18:23:50 INFO  Log:22 - EdgeBrowser Launch is successfully Completed
+2023-03-14 18:23:54 INFO  Log:15 - =====================================-----------BlogPage_BreadCrumbVerification    Ends--------- TEST END=========================================
+2023-03-14 18:23:55 INFO  Log:10 - =====================================-----------BlogPage_CartFucntionalityVerification    Starts--------- TEST START=========================================
+2023-03-14 18:23:58 INFO  Log:22 - ChromeBrowser Launch is successfully Completed
+2023-03-14 18:23:59 INFO  Log:22 - CartFucntionality Works perfectly
+2023-03-14 18:23:59 INFO  Log:15 - =====================================-----------BlogPage_CartFucntionalityVerification    Ends--------- TEST END=========================================
+2023-03-14 18:23:59 INFO  Log:10 - =====================================-----------BlogPage_CartFucntionalityVerification    Starts--------- TEST START=========================================
+2023-03-14 18:24:04 INFO  Log:22 - FirefoxBrowser Launch is successfully Completed
+2023-03-14 18:24:04 INFO  Log:22 - CartFucntionality Works perfectly
+2023-03-14 18:24:04 INFO  Log:15 - =====================================-----------BlogPage_CartFucntionalityVerification    Ends--------- TEST END=========================================
+2023-03-14 18:24:05 INFO  Log:10 - =====================================-----------BlogPage_CartFucntionalityVerification    Starts--------- TEST START=========================================
+2023-03-14 18:24:12 INFO  Log:22 - EdgeBrowser Launch is successfully Completed
+2023-03-14 18:24:12 INFO  Log:22 - CartFucntionality Works perfectly
+2023-03-14 18:24:12 INFO  Log:15 - =====================================-----------BlogPage_CartFucntionalityVerification    Ends--------- TEST END=========================================
+2023-03-14 18:24:13 INFO  Log:10 - =====================================-----------BlogPage_LogoFunctionalityVerification    Starts--------- TEST START=========================================
+2023-03-14 18:24:16 INFO  Log:22 - ChromeBrowser Launch is successfully Completed
+2023-03-14 18:24:17 INFO  Log:22 - LogoFunctionalityVerification Works perfectly
+2023-03-14 18:24:17 INFO  Log:22 - LogoFunctionalityVerification Works perfectly
+2023-03-14 18:24:17 INFO  Log:15 - =====================================-----------BlogPage_LogoFunctionalityVerification    Ends--------- TEST END=========================================
+2023-03-14 18:24:18 INFO  Log:10 - =====================================-----------BlogPage_LogoFunctionalityVerification    Starts--------- TEST START=========================================
+2023-03-14 18:24:24 INFO  Log:22 - FirefoxBrowser Launch is successfully Completed
+2023-03-14 18:24:24 INFO  Log:22 - LogoFunctionalityVerification Works perfectly
+2023-03-14 18:24:25 INFO  Log:22 - LogoFunctionalityVerification Works perfectly
+2023-03-14 18:24:25 INFO  Log:15 - =====================================-----------BlogPage_LogoFunctionalityVerification    Ends--------- TEST END=========================================
+2023-03-14 18:24:26 INFO  Log:10 - =====================================-----------BlogPage_LogoFunctionalityVerification    Starts--------- TEST START=========================================
+2023-03-14 18:24:30 INFO  Log:22 - EdgeBrowser Launch is successfully Completed
+2023-03-14 18:24:31 INFO  Log:22 - LogoFunctionalityVerification Works perfectly
+2023-03-14 18:24:32 INFO  Log:22 - LogoFunctionalityVerification Works perfectly
+2023-03-14 18:24:32 INFO  Log:15 - =====================================-----------BlogPage_LogoFunctionalityVerification    Ends--------- TEST END=========================================
+2023-03-14 18:24:32 INFO  Log:10 - =====================================BlogPage_PageHeaderVerification TEST START=========================================
+2023-03-14 18:24:50 INFO  Log:22 - ChromeBrowser Launch is successfully Completed
+2023-03-14 18:24:50 INFO  Log:22 - -----------Logo Verification Starts----------
+2023-03-14 18:24:50 INFO  Log:22 - -----------Logo Verification End successfully----------
+2023-03-14 18:24:50 INFO  Log:22 - -----------SearchBox Verification Starts----------
+2023-03-14 18:24:50 INFO  Log:22 - -----------SearchBox Verification End Successfully----------
+2023-03-14 18:24:50 INFO  Log:22 - -----------Cartbutton Verification Starts----------
+2023-03-14 18:24:50 INFO  Log:22 - -----------Cartbutton Verification End Successfully----------
+2023-03-14 18:24:50 INFO  Log:22 - -----------Userbutton Verification Starts----------
+2023-03-14 18:24:50 INFO  Log:22 - -----------Userbutton Verification End Successfully----------
+2023-03-14 18:24:50 INFO  Log:15 - =====================================BlogPage_PageHeaderVerification TEST END=========================================
+2023-03-14 18:24:51 INFO  Log:10 - =====================================BlogPage_PageHeaderVerification TEST START=========================================
+2023-03-14 18:24:57 INFO  Log:22 - FirefoxBrowser Launch is successfully Completed
+2023-03-14 18:24:57 INFO  Log:22 - -----------Logo Verification Starts----------
+2023-03-14 18:24:57 INFO  Log:22 - -----------Logo Verification End successfully----------
+2023-03-14 18:24:57 INFO  Log:22 - -----------SearchBox Verification Starts----------
+2023-03-14 18:24:57 INFO  Log:22 - -----------SearchBox Verification End Successfully----------
+2023-03-14 18:24:57 INFO  Log:22 - -----------Cartbutton Verification Starts----------
+2023-03-14 18:24:57 INFO  Log:22 - -----------Cartbutton Verification End Successfully----------
+2023-03-14 18:24:57 INFO  Log:22 - -----------Userbutton Verification Starts----------
+2023-03-14 18:24:57 INFO  Log:22 - -----------Userbutton Verification End Successfully----------
+2023-03-14 18:24:57 INFO  Log:15 - =====================================BlogPage_PageHeaderVerification TEST END=========================================
+2023-03-14 18:24:58 INFO  Log:10 - =====================================BlogPage_PageHeaderVerification TEST START=========================================
+2023-03-14 18:25:03 INFO  Log:22 - EdgeBrowser Launch is successfully Completed
+2023-03-14 18:25:03 INFO  Log:22 - -----------Logo Verification Starts----------
+2023-03-14 18:25:03 INFO  Log:22 - -----------Logo Verification End successfully----------
+2023-03-14 18:25:03 INFO  Log:22 - -----------SearchBox Verification Starts----------
+2023-03-14 18:25:03 INFO  Log:22 - -----------SearchBox Verification End Successfully----------
+2023-03-14 18:25:03 INFO  Log:22 - -----------Cartbutton Verification Starts----------
+2023-03-14 18:25:03 INFO  Log:22 - -----------Cartbutton Verification End Successfully----------
+2023-03-14 18:25:03 INFO  Log:22 - -----------Userbutton Verification Starts----------
+2023-03-14 18:25:03 INFO  Log:22 - -----------Userbutton Verification End Successfully----------
+2023-03-14 18:25:03 INFO  Log:15 - =====================================BlogPage_PageHeaderVerification TEST END=========================================
+2023-03-14 18:25:04 INFO  Log:10 - =====================================-----------BlogPage_ProductQuickviewVerification    Starts--------- TEST START=========================================
+2023-03-14 18:25:07 INFO  Log:22 - ChromeBrowser Launch is successfully Completed
+2023-03-14 18:25:08 INFO  Log:22 - Successfully verifying the product name with quick view Product name
+2023-03-14 18:25:09 INFO  Log:22 - Successfully verifying the product Price with quick view Product Price
+2023-03-14 18:25:09 INFO  Log:22 - Successfully verifying the product Description on clicking the quick view 
+2023-03-14 18:25:09 INFO  Log:22 - Successfully verifying the product ratings on clicking the quick view 
+2023-03-14 18:25:11 INFO  Log:22 - AddToCart of Product Page verification
+2023-03-14 18:25:11 INFO  Log:22 - Successfully verified AddToCart Message
+2023-03-14 18:25:11 INFO  Log:22 - Successfully ends the availabiltyStock
+2023-03-14 18:25:13 INFO  Log:22 - Successfully verifying the product name with quick view Product name
+2023-03-14 18:25:13 INFO  Log:22 - Successfully verifying the product Price with quick view Product Price
+2023-03-14 18:25:13 INFO  Log:22 - Successfully verifying the product Description on clicking the quick view 
+2023-03-14 18:25:13 INFO  Log:22 - Successfully verifying the product ratings on clicking the quick view 
+2023-03-14 18:25:15 INFO  Log:22 - AddToCart of Product Page verification
+2023-03-14 18:25:15 INFO  Log:22 - Successfully verified AddToCart Message
+2023-03-14 18:25:15 INFO  Log:22 - Successfully ends the availabiltyStock
+2023-03-14 18:25:16 INFO  Log:10 - =====================================-----------BlogPage_ProductQuickviewVerification    Starts--------- TEST START=========================================
+2023-03-14 18:25:21 INFO  Log:22 - FirefoxBrowser Launch is successfully Completed
+2023-03-14 18:25:22 INFO  Log:10 - =====================================-----------BlogPage_ProductQuickviewVerification    Starts--------- TEST START=========================================
+2023-03-14 18:25:27 INFO  Log:22 - EdgeBrowser Launch is successfully Completed
+2023-03-14 18:25:28 INFO  Log:22 - Successfully verifying the product name with quick view Product name
+2023-03-14 18:25:28 INFO  Log:22 - Successfully verifying the product Price with quick view Product Price
+2023-03-14 18:25:29 INFO  Log:22 - Successfully verifying the product Description on clicking the quick view 
+2023-03-14 18:25:29 INFO  Log:22 - Successfully verifying the product ratings on clicking the quick view 
+2023-03-14 18:25:31 INFO  Log:22 - AddToCart of Product Page verification
+2023-03-14 18:25:31 INFO  Log:22 - Successfully verified AddToCart Message
+2023-03-14 18:25:31 INFO  Log:22 - Successfully ends the availabiltyStock
+2023-03-14 18:25:32 INFO  Log:22 - Successfully verifying the product name with quick view Product name
+2023-03-14 18:25:32 INFO  Log:22 - Successfully verifying the product Price with quick view Product Price
+2023-03-14 18:25:32 INFO  Log:22 - Successfully verifying the product Description on clicking the quick view 
+2023-03-14 18:25:32 INFO  Log:22 - Successfully verifying the product ratings on clicking the quick view 
+2023-03-14 18:25:35 INFO  Log:22 - AddToCart of Product Page verification
+2023-03-14 18:25:35 INFO  Log:22 - Successfully verified AddToCart Message
+2023-03-14 18:25:35 INFO  Log:22 - Successfully ends the availabiltyStock
+2023-03-14 18:25:36 INFO  Log:22 - Successfully verifying the product name with quick view Product name
+2023-03-14 18:25:36 INFO  Log:22 - Successfully verifying the product Price with quick view Product Price
+2023-03-14 18:25:36 INFO  Log:22 - Successfully verifying the product Description on clicking the quick view 
+2023-03-14 18:25:36 INFO  Log:22 - Successfully verifying the product ratings on clicking the quick view 
+2023-03-14 18:25:39 INFO  Log:22 - AddToCart of Product Page verification
+2023-03-14 18:25:39 INFO  Log:22 - Successfully verified AddToCart Message
+2023-03-14 18:25:39 INFO  Log:22 - Successfully ends the availabiltyStock
+2023-03-14 18:25:39 INFO  Log:10 - =====================================-----------BlogPage_ProductImageVerification    Starts--------- TEST START=========================================
+2023-03-14 18:25:43 INFO  Log:22 - ChromeBrowser Launch is successfully Completed
+2023-03-14 18:25:43 INFO  Log:22 - ProductName is successfully verified
+2023-03-14 18:25:43 INFO  Log:22 - ProductName is successfully verified
+2023-03-14 18:25:43 INFO  Log:22 - Product Price is successfully verified
+2023-03-14 18:25:43 INFO  Log:22 - Product Price is successfully verified
+2023-03-14 18:25:43 INFO  Log:22 - Quick View Link is successfully verified
+2023-03-14 18:25:43 INFO  Log:22 - Quick View Link is successfully verified
+2023-03-14 18:25:43 INFO  Log:22 - Add To Cart button is successfully verified
+2023-03-14 18:25:43 INFO  Log:22 - Add To Cart button is successfully verified
+2023-03-14 18:25:43 INFO  Log:22 - Wishlist icon is successfully verified
+2023-03-14 18:25:43 INFO  Log:22 - Wishlist icon is successfully verified
+2023-03-14 18:25:43 INFO  Log:22 - Ratings icon is successfully verified
+2023-03-14 18:25:43 INFO  Log:22 - Ratings icon is successfully verified
+2023-03-14 18:25:43 INFO  Log:15 - =====================================-----------BlogPage_ProductImageVerification    Ends--------- TEST END=========================================
+2023-03-14 18:25:44 INFO  Log:10 - =====================================-----------BlogPage_ProductImageVerification    Starts--------- TEST START=========================================
+2023-03-14 18:25:50 INFO  Log:22 - FirefoxBrowser Launch is successfully Completed
+2023-03-14 18:25:50 INFO  Log:22 - ProductName is successfully verified
+2023-03-14 18:25:50 INFO  Log:22 - ProductName is successfully verified
+2023-03-14 18:25:50 INFO  Log:22 - Product Price is successfully verified
+2023-03-14 18:25:50 INFO  Log:22 - Product Price is successfully verified
+2023-03-14 18:25:50 INFO  Log:22 - Quick View Link is successfully verified
+2023-03-14 18:25:50 INFO  Log:22 - Quick View Link is successfully verified
+2023-03-14 18:25:50 INFO  Log:22 - Add To Cart button is successfully verified
+2023-03-14 18:25:50 INFO  Log:22 - Add To Cart button is successfully verified
+2023-03-14 18:25:50 INFO  Log:22 - Wishlist icon is successfully verified
+2023-03-14 18:25:50 INFO  Log:22 - Wishlist icon is successfully verified
+2023-03-14 18:25:50 INFO  Log:22 - Ratings icon is successfully verified
+2023-03-14 18:25:50 INFO  Log:22 - Ratings icon is successfully verified
+2023-03-14 18:25:50 INFO  Log:15 - =====================================-----------BlogPage_ProductImageVerification    Ends--------- TEST END=========================================
+2023-03-14 18:25:51 INFO  Log:10 - =====================================-----------BlogPage_ProductImageVerification    Starts--------- TEST START=========================================
+2023-03-14 18:25:56 INFO  Log:22 - EdgeBrowser Launch is successfully Completed
+2023-03-14 18:25:56 INFO  Log:22 - ProductName is successfully verified
+2023-03-14 18:25:56 INFO  Log:22 - ProductName is successfully verified
+2023-03-14 18:25:56 INFO  Log:22 - ProductName is successfully verified
+2023-03-14 18:25:56 INFO  Log:22 - Product Price is successfully verified
+2023-03-14 18:25:56 INFO  Log:22 - Product Price is successfully verified
+2023-03-14 18:25:57 INFO  Log:22 - Product Price is successfully verified
+2023-03-14 18:25:57 INFO  Log:22 - Quick View Link is successfully verified
+2023-03-14 18:25:57 INFO  Log:22 - Quick View Link is successfully verified
+2023-03-14 18:25:57 INFO  Log:22 - Quick View Link is successfully verified
+2023-03-14 18:25:57 INFO  Log:22 - Add To Cart button is successfully verified
+2023-03-14 18:25:57 INFO  Log:22 - Add To Cart button is successfully verified
+2023-03-14 18:25:57 INFO  Log:22 - Add To Cart button is successfully verified
+2023-03-14 18:25:57 INFO  Log:22 - Wishlist icon is successfully verified
+2023-03-14 18:25:57 INFO  Log:22 - Wishlist icon is successfully verified
+2023-03-14 18:25:57 INFO  Log:22 - Wishlist icon is successfully verified
+2023-03-14 18:25:57 INFO  Log:22 - Ratings icon is successfully verified
+2023-03-14 18:25:57 INFO  Log:22 - Ratings icon is successfully verified
+2023-03-14 18:25:57 INFO  Log:22 - Ratings icon is successfully verified
+2023-03-14 18:25:57 INFO  Log:15 - =====================================-----------BlogPage_ProductImageVerification    Ends--------- TEST END=========================================
+2023-03-14 18:25:57 INFO  Log:10 - =====================================-----------BlogPage_ProductWishlistVerification    Starts--------- TEST START=========================================
+2023-03-14 18:26:01 INFO  Log:22 - ChromeBrowser Launch is successfully Completed
+2023-03-14 18:26:32 INFO  Log:22 - Click on user account button
+2023-03-14 18:26:35 INFO  Log:10 - =====================================-----------BlogPage_ProductWishlistVerification    Starts--------- TEST START=========================================
+2023-03-14 18:26:43 INFO  Log:22 - FirefoxBrowser Launch is successfully Completed

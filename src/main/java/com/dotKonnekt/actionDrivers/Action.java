@@ -11,6 +11,7 @@ import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -67,7 +68,7 @@ public class Action extends BaseClass  {
 
 	public static boolean isDisplayed(WebDriver driver, WebElement ele) {
 		boolean flag = false;
-		flag = findElement(driver, ele);
+		flag = findElement(getDriver(), ele);
 		if (flag) {
 			flag = ele.isDisplayed();
 			if (flag) {
@@ -145,6 +146,31 @@ public class Action extends BaseClass  {
 		return flag;
 	}
 
+	 
+	public static boolean doubleClick_SendValue(WebElement ele,String text) {
+		boolean flag = false;
+		try {
+			flag = ele.isDisplayed();
+			Actions act = new Actions(getDriver());
+			act.doubleClick(ele).keyDown(Keys.CONTROL).sendKeys(String.valueOf('\u0061')).perform();
+			ele.clear();
+			ele.sendKeys(text);
+			
+			// logger.info("Entered text :"+text);
+			flag = true;
+		} catch (Exception e) {
+			System.out.println("Location Not found");
+			flag = false;
+		} finally {
+			if (flag) {
+				System.out.println("Successfully doubled Clicked & entered value");
+			} else {
+				System.out.println("Unable to enter value");
+			}
+
+		}
+		return flag;
+	}
 	 
 	public static boolean selectBySendkeys(String value,WebElement ele) {
 		boolean flag = false;
@@ -753,6 +779,12 @@ public class Action extends BaseClass  {
 		WebDriverWait wait = new WebDriverWait(driver,timeOut);
 		wait.until(ExpectedConditions.visibilityOf(element));
 	}
+	public static void explicitWaitbyTitle(WebDriver driver, String title, Duration  timeOut ) {
+		WebDriverWait wait = new WebDriverWait(driver,timeOut);
+		wait.until(ExpectedConditions.titleIs(title));
+	}
+	
+	
 	 
 	@SuppressWarnings("deprecation")
 	public static void pageLoadTimeOut(WebDriver driver, int timeOut) {
@@ -763,7 +795,7 @@ public class Action extends BaseClass  {
 		String dateName = new SimpleDateFormat("yyyy-MM-dd-hh-mm-ss").format(new Date());
 		TakesScreenshot takesScreenshot = (TakesScreenshot) webDriver;
 		File source = takesScreenshot.getScreenshotAs(OutputType.FILE);
-		String destination = System.getProperty("user.dir") + "\\Screenshots\\" + filename + "_" + dateName + ".png";
+		String destination = "C:\\Users\\garvi\\eclipse-workspace\\RecipePage3\\Screenshots\\" + filename + "_" + dateName + ".png";
 
 		try {
 			FileUtils.copyFile(source, new File(destination));
