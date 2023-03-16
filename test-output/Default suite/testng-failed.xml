@@ -3,27 +3,17 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.dotKonnekt.tests.BlogPageTest">
+      <class name="com.dotKonnekt.tests.CategoryPageTest">
         <methods>
-          <include name="BlogPage_ProductQuickviewVerification" invocation-numbers="0 1 2"/>
-          <include name="BlogPage_authornameVerification"/>
-          <include name="teardown"/>
-          <include name="BlogPage_blogTitleVerification"/>
-          <include name="BlogPage_UserFunctionalityVerification"/>
-          <include name="BlogPage_addCommentVerification"/>
-          <include name="BlogPage_likeIconFunctionality1"/>
+          <include name="CategoryPage_NewArrivalSection" invocation-numbers="4"/>
+          <include name="imageVerification" invocation-numbers="4"/>
+          <include name="CategoryPage_popularReadsVerification" invocation-numbers="2 4"/>
+          <include name="CategoryPage_BigImageBlogVerification" invocation-numbers="2 4"/>
           <include name="flush"/>
-          <include name="BlogPage_tagsVerification"/>
-          <include name="BlogPage_TitleVerification"/>
-          <include name="BlogPage_SearchFucntionalityVerification"/>
-          <include name="BlogPage_bookMarkIconFunctionality"/>
-          <include name="BlogPage_ProductWishlistVerification" invocation-numbers="0 1"/>
-          <include name="BlogPage_recipeImage"/>
-          <include name="BlogPage_BlogVideoVerification" invocation-numbers="2"/>
           <include name="loadConfig"/>
-          <include name="BlogPage_ShareIconFunctionality"/>
+          <include name="teardown"/>
         </methods>
-      </class> <!-- com.dotKonnekt.tests.BlogPageTest -->
+      </class> <!-- com.dotKonnekt.tests.CategoryPageTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
