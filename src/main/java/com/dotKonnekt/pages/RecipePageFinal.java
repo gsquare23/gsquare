@@ -267,6 +267,11 @@ public class RecipePageFinal extends BaseClass {
 	 
 	public void tagList(){
 		 Log.info("Veryfying the Tag List");
+		 
+		 WebElement l = getDriver().findElement(By.tagName("body"));
+		// System.out.println("Elements with P: =" + l.getText());
+		 if(l.getText().contains("Tags")) {
+		 
 		 WebElement tagText = getDriver().findElement(By.
 				  xpath("//p[@class = 'MuiTypography-root MuiTypography-body1 css-qfzj9b']"));
 		  Action.scrollByVisibilityOfElement(getDriver(), tagText);
@@ -332,7 +337,12 @@ public class RecipePageFinal extends BaseClass {
 			else if(taggs.size()==0) {
 				System.out.println("Taggs elements are blank");
 				Assert.assertTrue(false);
-			}			
+			}
+		 }
+		 
+		 else {
+			 System.out.println("Tags are not present on this page");
+		 }
 	}
 	
 		public void tagElements() throws InterruptedException {

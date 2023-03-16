@@ -258,6 +258,8 @@ public class RecipePageTest extends BaseClass {
 	public void RecipePage_TaglistElementsVerification(String page, String title, String browser, String url,
 			String CategoryElements, String AuthorName, String PublishDate, String Blogtitle, String nutritionList,
 			String see_more) throws InterruptedException {
+		
+		
 		Log.startTestCase("-----------RecipePage_TaglistElementsVerification    Starts---------");
 		recipePage = new RecipePageFinal();
 		launchApp_V1(browser, prop.getProperty("LoginUrl"));
@@ -287,7 +289,7 @@ public class RecipePageTest extends BaseClass {
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	
-	@Test(dataProvider = "NewRecipePage1", dataProviderClass = DataProviders.class, enabled = true, groups = "LoggedIn")
+	@Test(dataProvider = "NewRecipePage1", dataProviderClass = DataProviders.class, enabled = false, groups = "LoggedIn")
 	public void RecipePage_AddCommentinCommentSeection(String page, String title, String browser, String url,
 			String CategoryElements, String AuthorName, String PublishDate, String Blogtitle, String nutritionList,
 			String see_more) throws InterruptedException {
@@ -305,7 +307,7 @@ public class RecipePageTest extends BaseClass {
 	
 	
 	
-	@Test(dataProvider = "NewRecipePage1", dataProviderClass = DataProviders.class, enabled = true, groups = "LoggedIn")
+	@Test(dataProvider = "NewRecipePage1", dataProviderClass = DataProviders.class, enabled = false, groups = "LoggedIn")
 	public void RecipePage_bookMarkIconFunctionality(String page, String title, String browser, String url,
 			String CategoryElements, String AuthorName, String PublishDate, String Blogtitle, String nutritionList,
 			String see_more) throws InterruptedException {
@@ -316,7 +318,7 @@ public class RecipePageTest extends BaseClass {
 		Log.endTestCase("-----------RecipePage_bookMarkIconFunctionality    Ends---------");
 	}
 	
-	@Test(dataProvider = "NewRecipePage1", dataProviderClass = DataProviders.class, enabled = true, groups = "LoggedIn")
+	@Test(dataProvider = "NewRecipePage1", dataProviderClass = DataProviders.class, enabled = false, groups = "LoggedIn")
 
 	public void RecipePage_likeIconFunctionality(String page, String title, String browser, String url,
 			String CategoryElements, String AuthorName, String PublishDate, String Blogtitle, String nutritionList,

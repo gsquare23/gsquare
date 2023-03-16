@@ -129,6 +129,7 @@ public class CategoryPageTest  extends BaseClass {
 	  public void imageVerification(String page, String title,
 	  String browser, String url, String CategoryElements, String tagsElement,
 	  String categoryName) throws InterruptedException {
+		
 	  Log.startTestCase("-----------imageVerification    Starts---------");
 	  categoryPage = new CategoryPage(); launchApp_V1(browser, url);
 	  categoryPage.imageVerification();
@@ -206,7 +207,8 @@ public class CategoryPageTest  extends BaseClass {
 		Log.startTestCase("-----------CategoryPage_subCategoriesVerification    Starts---------");
 		categoryPage = new CategoryPage();
 		launchApp_V1(browser, url);
-		categoryPage.subCategories();
+		//categoryPage.subCategories();
+		categoryPage.subCategoriesVerification();
 		Log.endTestCase("-----------CategoryPage_subCategoriesVerification    Ends---------");
 	}
 	
@@ -219,6 +221,15 @@ public class CategoryPageTest  extends BaseClass {
 		Log.endTestCase("-----------CategoryPage_subCategoriesVerification    Ends---------");
 	}
 	
+	
+	@Test(dataProvider = "CategoryPage", dataProviderClass = DataProviders.class, enabled = true, groups = "NotLoggedIn")
+	public void CategoryPage_BigImageBlogVerification(String page, String title, String browser, String url, String CategoryElements, String tagsElement, String categoryName) throws InterruptedException {
+		Log.startTestCase("-----------CategoryPage_BigImageBlogVerification    Starts---------");
+		categoryPage = new CategoryPage();
+		launchApp_V1(browser, url);
+		categoryPage.bigImageBlog();
+		Log.endTestCase("-----------CategoryPage_BigImageBlogVerification    Ends---------");
+	}
 	
 	
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

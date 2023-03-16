@@ -240,10 +240,10 @@ public class BlogPageTest  extends BaseClass {
 	@Test(dataProvider = "BlogPage1", dataProviderClass = DataProviders.class, enabled =  true, groups = "NotLoggedIn")
 	public void BlogPage_ProductWishlistVerification(String page, String title, String browser, String url, String BlogPageElements, String AuthorName, String PublishDate, String blogTitle) throws InterruptedException {
 		Log.startTestCase("-----------BlogPage_ProductWishlistVerification    Starts---------");
-		blogPage = new BlogPage();
+		productPage = new ProductPage();
 		launchApp_V1(browser, url);
-		//productPage.wishlistIconFunctionalityforNotLoggedIn();
-		blogPage.wishlistIconFunctionalityForLoggedIn();
+		productPage.wishlistIconFunctionalityforNotLoggedIn();
+		//blogPage.wishlistIconFunctionalityForLoggedIn();
 		Log.endTestCase("-----------BlogPage_ProductWishlistVerification    Ends---------");
 	}
 	
@@ -270,7 +270,7 @@ public class BlogPageTest  extends BaseClass {
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
 	
 
-	@Test(dataProvider = "BlogPage1", dataProviderClass = DataProviders.class, enabled = false, groups = "LoggedIn")
+	@Test(dataProvider = "BlogPage1", dataProviderClass = DataProviders.class, enabled = true, groups = "LoggedIn")
 	public void BlogPage_AddCommentinCommentSeection(String page, String title, String browser, String url, String BlogPageElements, String AuthorName, String PublishDate, String blogTitle) throws InterruptedException {
 		Log.startTestCase("BlogPage_AddCommentinCommentSeection");
 
@@ -284,7 +284,7 @@ public class BlogPageTest  extends BaseClass {
 		Log.endTestCase("-----------BlogPage_AddCommentinCommentSeection ---------");
 	}
 	
-	@Test(dataProvider = "BlogPage1", dataProviderClass = DataProviders.class, enabled = false, groups = "LoggedIn")
+	@Test(dataProvider = "BlogPage1", dataProviderClass = DataProviders.class, enabled = true, groups = "LoggedIn")
 	public void BlogPage_bookMarkIconFunctionalityLoggedIn(String page, String title, String browser, String url, String BlogPageElements, String AuthorName, String PublishDate, String blogTitle) throws InterruptedException {
 		Log.startTestCase("-----------BlogPage_bookMarkIconFunctionalityLoggedIn    Starts---------");
 		recipePage = new RecipePageFinal();
@@ -293,7 +293,7 @@ public class BlogPageTest  extends BaseClass {
 		Log.endTestCase("-----------BlogPage_bookMarkIconFunctionalityLoggedIn    Ends---------");
 	}
 	
-	@Test(dataProvider = "BlogPage1", dataProviderClass = DataProviders.class, enabled = false, groups = "LoggedIn")
+	@Test(dataProvider = "BlogPage1", dataProviderClass = DataProviders.class, enabled = true, groups = "LoggedIn")
 	public void BlogPage_likeIconFunctionality(String page, String title, String browser, String url, String BlogPageElements, String AuthorName, String PublishDate, String blogTitle) throws InterruptedException {
 		Log.startTestCase("-----------BlogPage_likeIconFunctionality    Starts---------");
 		recipePage = new RecipePageFinal();

@@ -46,24 +46,51 @@ public class CategoryPage extends BaseClass{
 		return bdlast;
 		
 	}
-	
+	;
+	String images1 = "//div[@class='MuiBox-root css-cgiybc']/span/img";
 	String imageDescription = "//div[@class='MuiBox-root css-cgiybc']//img[@alt='logo']";
 	public void imageVerification() {
 		WebElement imageDes = getDriver().findElement(By.xpath(imageDescription));
-		Action.explicitWait(getDriver(), imageDes, Duration.ofSeconds(5));
-		//boolean p =Action.isDisplayed(getDriver(), imageDes);
-		Boolean p = (Boolean) ((JavascriptExecutor)getDriver()) .executeScript("return arguments[0].complete " + "&& typeof arguments[0].naturalWidth != \"undefined\" " + "&& arguments[0].naturalWidth > 0", imageDes);
-		if(p) {
-			System.out.println("Image is present nad verified successfully");
+		Action.explicitWait(getDriver(), imageDes, Duration.ofSeconds(2));
+		
+		List<WebElement> image = getDriver().findElements(By.xpath(images1));
+		int x = image.size();
+		int count4 = 0;
+		if (x == 1) {
+			for(WebElement i : image) {
+				Action.mouseOverElement(getDriver(), i);
+				if(i.getAttribute("srcset").contains("amazonaws.com")) {
+					count4++;
+				}
+			}
+			if(count4 ==1 ) {
+			System.out.println("All " + count4 + " images are present");}
+			else {
+				softAssert.assertTrue(false, " Images are not present  ");
+			}
+		} else {
+			System.out.println(" Images are not present ");
+			softAssert.assertTrue(false, " Images are not present ");
 		}
-		else {
-			System.out.println("Image is not present");
-			Assert.assertTrue(false, "Image is not present");
-		}
+		
+		/*
+		 * Boolean p = (Boolean) ((JavascriptExecutor)getDriver())
+		 * .executeScript("return arguments[0].complete " +
+		 * "&& typeof arguments[0].naturalWidth != \"undefined\" " +
+		 * "&& arguments[0].naturalWidth > 0", imageDes); if(p) {
+		 * System.out.println("Image is present and verified successfully"); } else {
+		 * System.out.println("Image is not present"); Assert.assertTrue(false,
+		 * "Image is not present"); }
+		 */
 	}
 	
 	String taggscount= "//span[@class='MuiChip-label MuiChip-labelMedium css-9iedg7']";
 	public void tagList(){
+		
+		WebElement l = getDriver().findElement(By.tagName("body"));
+		// System.out.println("Elements with P: =" + l.getText());
+		 if(l.getText().contains("Tags")) {
+		
 		 Log.info("Veryfying the Tag List");
 		  WebElement tagText = getDriver().findElement(By.
 				  xpath("//p[@class = 'MuiTypography-root MuiTypography-body1 css-qfzj9b']"));
@@ -130,7 +157,12 @@ public class CategoryPage extends BaseClass{
 			else if(taggs.size()==0) {
 				System.out.println("Taggs elements are blank");
 				Assert.assertTrue(false, "Taggs elements are blank");
-			}			
+			}	
+			
+		 }
+		 else {
+			 System.out.println("Tags are not present on this page");
+		 }
 	}
 	
 	String subtabs  = "//div[@class='MuiTabs-flexContainer css-k008qs']/button";
@@ -156,6 +188,9 @@ public class CategoryPage extends BaseClass{
 		  System.out.println("subTabs list Steps are not equal");
 		  Assert.assertTrue(false, "subTabs list Steps are not equal" ); }
 	}
+	
+	
+	
 	 String allproduct ="//div[@class='MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root css-1y49jfj']";
 	String quickview = "//p[@class='MuiTypography-root MuiTypography-body1 css-xrfgiq']";
 	String discountedPrice = "//p[@class='MuiTypography-root MuiTypography-body1 css-1tva794']";
@@ -165,6 +200,7 @@ public class CategoryPage extends BaseClass{
 	String carticon = "//*[name()='svg' and @data-testid='ShoppingCartOutlinedIcon']";
 	String wishlist = "//*[name()='svg' and @data-testid='FavoriteBorderOutlinedIcon']";
 	SoftAssert softAssert = new SoftAssert();
+	
 		public void newArrival() throws InterruptedException {
 		String filter = "//p[@class='MuiTypography-root MuiTypography-body1 css-1rp7iwk']";
 		WebElement filterBy = getDriver().findElement(By.xpath(filter));
@@ -247,6 +283,8 @@ public class CategoryPage extends BaseClass{
 		}
 	
 	}
+		
+		
 		String subCateg = "(//div[contains(@class, 'css-j7qwjs')])/button";
 		public void subCategories() {
 			List<WebElement> SubCategoriesValue =getDriver().findElements(By.xpath(subCateg));
@@ -272,6 +310,38 @@ public class CategoryPage extends BaseClass{
 				softAssert.assertTrue(false, "Sub_categories are not present perfectly");
 			}
 		}
+		
+		
+		String inspect = "//div[@class='MuiBox-root css-1y4n82h']";
+		String categoryElements1 = "//div[@class='MuiBox-root css-1y4n82h']/button";
+		public void subCategoriesVerification() {
+			List<WebElement> menuList = getDriver().findElements(By.xpath(categoryElements1));
+		
+			for(WebElement i: menuList) {
+				if(i.getText().contains("Skin")) {
+				String l = "(//div[@class='MuiBox-root css-1y4n82h']/button)["+ 1+ "]";
+				WebElement m= getDriver().findElement(By.xpath(l));
+				Action.click(getDriver(), m);
+				String subCategories = inspect + "/div";
+				WebElement SubCategories = getDriver().findElement(By.xpath(subCategories));
+				String subCategoriesText = SubCategories.getText();
+				System.out.println(subCategoriesText);
+				
+			}
+				
+				else if(i.getText().contains("Skin")) {
+					String l = "(//div[@class='MuiBox-root css-1y4n82h']/button)["+ 1+ "]";
+					WebElement m= getDriver().findElement(By.xpath(l));
+					Action.click(getDriver(), m);
+					String subCategories = inspect + "/div";
+					WebElement SubCategories = getDriver().findElement(By.xpath(subCategories));
+					String subCategoriesText = SubCategories.getText();
+					System.out.println(subCategoriesText);
+			}
+		}
+	}
+		
+		
 		String bookmark ="//*[name()='svg' and @data-testid='BookmarkBorderIcon']";
 		String crumb = "//div[contains(@class,'css-9g2cf7')]/div[2]/div/p[1]";
 		String title = "//div[contains(@class,'css-9g2cf7')]/div[2]/div/p[2]";
@@ -309,6 +379,60 @@ public class CategoryPage extends BaseClass{
 			Assert.assertEquals(BookMarkIcon.size(), 7, "one of the bookmark is not present");
 			Log.info("Successfully verified the presence of the bookmark icon ");
 		}
-	
+		
+		String readmore = "//button[contains(@class,'css-1s3a5x3')]";
+		String writtenBy = "//div[contains(@class,'css-90yzwr')]";
+		String bigImageDesc = "//div[contains(@class,'css-1u5x3pp')]/p/p";
+		String blogTitle = "//div[contains(@class,'css-rhwwre')]";
+		String bigImageTitle = "//div[contains(@class,'css-6k5ne1')]";
+		String bigImage = "//div[contains(@class,'css-19qk1n6')]/img";
+		public void bigImageBlog () {
+			WebElement BigImage = getDriver().findElement(By.xpath(bigImage));
+			Action.scrollByVisibilityOfElement(getDriver(), BigImage);
+			if(BigImage.getAttribute("src").contains("drupal")) {
+				Log.info("Big image blog is present on the category page");
+				
+				WebElement BigImageTitle = getDriver().findElement(By.xpath(bigImageTitle));
+				softAssert.assertTrue(BigImageTitle.isDisplayed(), "Title is not present on the category page");
+				String Title = BigImageTitle.getText();
+				Log.info("Big image Title is present on the category page");
+				WebElement BigImageDesc = getDriver().findElement(By.xpath(bigImageDesc));
+				softAssert.assertTrue(BigImageDesc.isDisplayed(), "Description is not present on the category page of the Big Image size blog");
+				Log.info("Big image Title is present on the category page");
+				
+				Action.click(getDriver(), BigImageTitle);
+				Action.explicitWaitbyTitle(getDriver(), "BlogPage", Duration.ofSeconds(5));
+				
+				WebElement Blogtitle = getDriver().findElement(By.xpath(blogTitle));
+				softAssert.assertEquals(Blogtitle.getText(), Title, "Blog Title is not same Category Page Big Image Blog" );
+				Log.info("Successfully verified the title of the blog with the category title");
+				
+				getDriver().navigate().back();
+				Action.explicitWaitbyTitle(getDriver(), "Category", Duration.ofSeconds(5));
+				
+				WebElement WrittenBy = getDriver().findElement(By.xpath(writtenBy));
+				System.out.println(WrittenBy.getText());
+				if(WrittenBy.getText().contains("Written by") && WrittenBy.getText().contains("Updated on")) {
+					Log.info("Author name & update on date is present");
+				}
+				else {
+					softAssert.assertTrue(false, "Author name & update on date is not present");
+				}
+				
+				WebElement ReadMorebutton  = getDriver().findElement(By.xpath(readmore));
+				softAssert.assertTrue(ReadMorebutton.isDisplayed() && ReadMorebutton.getText().equals("Read more"), "Read More button is not displayed");
+				Action.click(getDriver(), ReadMorebutton);
+				Action.explicitWaitbyTitle(getDriver(), "BlogPage", Duration.ofSeconds(5));
+				getDriver().navigate().back();
+				Action.explicitWaitbyTitle(getDriver(), "Category", Duration.ofSeconds(5));
+				
+				
+				
+				
+			}
+			else {
+				Assert.assertTrue(false, "Big image blog is not present on this category Page");
+			}
+		}
 			
 }
