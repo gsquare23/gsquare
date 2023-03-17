@@ -373,6 +373,7 @@ public class BlogPage extends BaseClass{
 		}
 	}
 	
+	
 	String icon = "(//*[local-name()='svg' and @data-testid='FavoriteBorderOutlinedIcon'])[1]";
 	String cartButton = "//div[@class='MuiBox-root css-1g2muyo']/button[1]";
 	String stockCount = "//div[@class='MuiBox-root css-8hvv1y']/div/input";
@@ -426,6 +427,11 @@ public class BlogPage extends BaseClass{
 				softAssert.assertTrue(QuikViewPDesc.isDisplayed(), "Quick view Product does not contain Product description");
 				Log.info("Successfully verifying the product Description on clicking the quick view ");
 				
+				String productDetail1 = "//div[contains(@class,'css-rkcvek')]/a";
+				WebElement ProductDetail1 = getDriver().findElement(By.xpath(productDetail1));
+				softAssert.assertTrue(ProductDetail1.isDisplayed() && ProductDetail1.getText().equals("View Product Details"), "Quick view Product does not contain View Product Details link");
+				softAssert.assertTrue(ProductDetail1.isEnabled(), "View Product Detail is enabled ");
+				Log.info("Successfully verifying the View Product Details on clicking the quick view ");
 				
 				String quickPRatings = "//div[@class='MuiBox-root css-18u70he']//div[@class='MuiBox-root css-yeouz0']/span";
 				WebElement QuickPRatings = getDriver().findElement(By.xpath(quickPRatings));

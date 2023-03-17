@@ -22,7 +22,7 @@ public class ProductPage extends BaseClass {
 	public ProductPage() {
 		PageFactory.initElements(getDriver(), this);
 	}
-
+	SoftAssert softAssert = new SoftAssert();
 	String productName = "//div[@class='MuiTypography-root MuiTypography-body1 css-122og3s']";
 	String Bigimage = "(//div[@class='magnifier_container MuiBox-root css-1pujjbg']//img)[2]";
 	String smallImage = "(//div[@class='css-j6afl0']//img)[2]";
@@ -260,6 +260,64 @@ public class ProductPage extends BaseClass {
 		}
 	}
 	
+	String allProducts ="(//div[contains(@class,'css-1ho6dvz')])";
+	public void productTiltProducts() {
+		List<WebElement> products1 = getDriver().findElements(By.xpath(allProducts));
+		int n = products1.size();
+		System.out.println(n);
+		int count=1;
+		int count1 = 1;
+		for(WebElement j: products1) {
+			String productname = "("+ allProducts +")["+ count + "]/div[1]/div[1]"; 
+			WebElement ProductName1 = getDriver().findElement(By.xpath(productname));
+			Action.scrollByVisibilityOfElement(getDriver(), ProductName1);
+			String PName = ProductName1.getText();
+			System.out.println(PName);
+			Assert.assertTrue(ProductName1.isDisplayed());
+			
+			String productprice =  allProducts +"["+ count + "]/div/div[2]/div";
+			WebElement ProductPrice = getDriver().findElement(By.xpath(productprice));
+			String PPrice = ProductPrice.getText();
+			System.out.println(PPrice);
+			Assert.assertTrue(ProductPrice.isDisplayed(), "Price is not present on the product Tile");
+			
+			String productRating =  allProducts +"["+ count + "]/div/div[4]/span";
+			WebElement ProductRating = getDriver().findElement(By.xpath(productRating));
+			String PRating = ProductRating.getAttribute("aria-label");
+			System.out.println(PRating);
+			
+			String quickView = allProducts +"["+ count + "]/div/p";
+			WebElement QuickView = getDriver().findElement(By.xpath(quickView));
+			if(QuickView.isDisplayed()) {
+				Action.click(getDriver(), QuickView);
+				String quickPName = "(//div[@class='MuiTypography-root MuiTypography-body1 css-vcbw66'])[2]";
+				WebElement QuickPName = getDriver().findElement(By.xpath(quickPName));
+				softAssert.assertTrue(QuickPName.getText().contains(PName), "Quick view Link does not contain same name as product Tile");
+				Log.info("Successfully verifying the product name with quick view Product name");
+				
+				String quickPPrice = "(//div[@class='MuiTypography-root MuiTypography-body1 css-1b9o26n'])[2]";
+				WebElement QuickPPrice = getDriver().findElement(By.xpath(quickPPrice));
+				System.out.println(QuickPPrice.getText());
+				softAssert.assertEquals(QuickPPrice.getText(), PPrice, "Quick view Link does not contain same Price as product Tile");
+				Log.info("Successfully verifying the product Price with quick view Product Price");
+				
+				String quikViewPDesc = "(//div[@class='MuiTypography-root MuiTypography-body1 css-9p1hyi'])[2]";
+				WebElement QuikViewPDesc = getDriver().findElement(By.xpath(quikViewPDesc));
+				softAssert.assertTrue(QuikViewPDesc.isDisplayed(), "Quick view Product does not contain Product description");
+				Log.info("Successfully verifying the product Description on clicking the quick view ");
+				
+				String productDetail1 = "//div[contains(@class,'css-rkcvek')]/a";
+				WebElement ProductDetail1 = getDriver().findElement(By.xpath(productDetail1));
+				softAssert.assertTrue(ProductDetail1.isDisplayed() && ProductDetail1.getText().equals("View Product Details"), "Quick view Product does not contain View Product Details link");
+				softAssert.assertTrue(ProductDetail1.isEnabled(), "View Product Detail is enabled ");
+				Log.info("Successfully verifying the View Product Details on clicking the quick view ");
+				
+			count++;
+			}
+		}
+	}
+	
+	
 	String allproduct = "(//div[@class='swiper-wrapper'])[1]/div/div";
 	String carticon = "//*[name()='svg' and @data-testid='ShoppingCartOutlinedIcon']";
 	String wishlist = "//*[name()='svg' and @data-testid='FavoriteBorderOutlinedIcon']";
@@ -268,7 +326,7 @@ public class ProductPage extends BaseClass {
 	String actualPrice = "//div[@class='MuiTypography-root MuiTypography-body1 css-lgaoco']";
 	String productsName = "(//div[@class='swiper-wrapper'])[1]/div/div/div/div[1]";
 	String images = "(//div[@class='swiper-wrapper'])[1]/div/div/span/img";
-	SoftAssert softAssert = new SoftAssert();
+	
 
 	public void wefoundOtherSections() {
 		String productYouMightLikeSection = "//div[normalize-space()='We found other products you might like']";

@@ -185,7 +185,8 @@ String bd_Home = "(//li[@class='MuiBreadcrumbs-li'])/a";
 		
 		productPage = new ProductPage();
 		launchApp_V1(browser, url);
-		productPage.productElementsVerification();
+		productPage.productTiltProducts();
+		//productPage.productElementsVerification();
 		Log.endTestCase("ProductPage_ProductElements");
 	}
 	

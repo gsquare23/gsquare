@@ -81,6 +81,7 @@ public class BaseClass {
 		else if (browsername.contains("Firefox")) {
 			WebDriverManager.firefoxdriver().setup();
 			driver.set(new FirefoxDriver());
+
 		} 
 		else if (browsername.contains("Headless")) {
 			WebDriverManager.chromedriver().setup();
