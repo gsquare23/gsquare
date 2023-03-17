@@ -3,17 +3,14 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.dotKonnekt.tests.CategoryPageTest">
+      <class name="com.dotKonnekt.tests.ProductPageTest">
         <methods>
-          <include name="CategoryPage_NewArrivalSection" invocation-numbers="4"/>
-          <include name="imageVerification" invocation-numbers="4"/>
-          <include name="CategoryPage_popularReadsVerification" invocation-numbers="2 4"/>
-          <include name="CategoryPage_BigImageBlogVerification" invocation-numbers="2 4"/>
           <include name="flush"/>
           <include name="loadConfig"/>
-          <include name="teardown"/>
+          <include name="ProductPage_ProductElements" invocation-numbers="0"/>
+          <include name="tearDown"/>
         </methods>
-      </class> <!-- com.dotKonnekt.tests.CategoryPageTest -->
+      </class> <!-- com.dotKonnekt.tests.ProductPageTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
