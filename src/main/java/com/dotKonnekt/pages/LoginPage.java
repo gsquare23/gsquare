@@ -112,24 +112,40 @@ public class LoginPage extends BaseClass {
 		return new HomePage();
 	}
 	
-	public HomePage loginSetup1(String Username, String Password) throws InterruptedException {
-		getDriver().findElement(By.xpath("(//img[@alt ='logo'])[4]")).click();
+	String userEmail = "email";
+	String password1 = "";
+	public void loginSetup1(String Username, String Password) throws InterruptedException {
+		
+		getDriver().findElement(By.xpath("//div[@class='MuiBox-root css-tap1yw']//img[@alt='logo']")).click();
+		String welcomeText = getDriver().findElement(By.xpath(welcomeTxt1)).getText();
+		Assert.assertEquals(welcomeText, "Welcome", "Welcome Text is not present");
+		Log.info("Successfully verified the Welcome Text Presence");
+		String AccessMsg = getDriver().findElement(By.xpath(accessTxt)).getText();
+		Assert.assertEquals(AccessMsg, "To access account and manage orders");
+		Log.info("Successfully verified the access text presence");
+		String login_signupMsg =getDriver().findElement(By.xpath(loginTxt)).getText();
+		Assert.assertEquals(login_signupMsg, "LOGIN/SIGNUP");
+		Log.info("Login/Signup presence verified");
 		getDriver().findElement(By.xpath(loginTxt)).click();
+		Log.info("Login button is active and working perfectly");
 		WebElement login = getDriver().findElement(By.xpath(loginPageTxt));
 		Action.explicitWait(getDriver(), login, Duration.ofSeconds(10));
 		String loginTitle = getDriver().getTitle();
 		Assert.assertEquals(loginTitle, "Login");
-			Log.info("Login with username and password ");
-			Action.type(username, Username);
-			Action.type(password, Password);
-			Thread.sleep(10000);
+		Log.info("Successfully verified the presence of the Login PAge Title");
+		Log.info("Login with username and password ");
+			
+		WebElement UserEmail = getDriver().findElement(By.name("email"));
+		WebElement UserPassword = getDriver().findElement(By.name("password"));
+		WebElement loginBtn =  getDriver().findElement(By.xpath("//button[normalize-space()='LOG IN']"));
+		Action.type(UserEmail, Username);
+			Action.type(UserPassword, Password);
+			Thread.sleep(15000);
 			Action.click(getDriver(), loginBtn);
-			Action.explicitWaitbyTitle(getDriver(), "Sangria Base UI", Duration.ofSeconds(10));
-			String titleNew = getDriver().getTitle();
-			System.out.println(titleNew);
-			Assert.assertEquals(titleNew, "Sangria Base UI");
+			Action.explicitWaitbyTitle(getDriver(), "dot beauty", Duration.ofSeconds(5));
+			Log.info("Successfully land on the home page");
 		
-		return new HomePage();
+		
 	}
 	String bookCount = "//p[@class = 'MuiTypography-root MuiTypography-body1 css-5cgcae'][2]";
 	String bookMarkIcon = "(//*[name()='svg'][@class='MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-fwkm60'])[2]";

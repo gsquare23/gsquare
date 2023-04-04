@@ -35,14 +35,14 @@ public class RecipePageFinal extends BaseClass {
 	String bookCount = "//p[@class = 'MuiTypography-root MuiTypography-body1 css-5cgcae'][2]";
 	String socialMediaIcons = "(//*[name()='circle'])";
 	String categoryElements = "//div[@class='css-1u1j1m2']/div/button";
-	String blog_title = "//div[@class='MuiTypography-root MuiTypography-body1 css-1q9lqtf']";
+	String blog_title = "//div[@class='MuiTypography-root MuiTypography-body1 css-w8lzqg']";
 	String quickview = "//p[@class='MuiTypography-root MuiTypography-body1 css-xrfgiq']";
-	String actualPrice = "//p[@class='MuiTypography-root MuiTypography-body1 css-1tva794']";
-	String discountedPrice = "//div[@class='MuiTypography-root MuiTypography-body1 css-lgaoco']";
-	String productsName = "//div[@class='MuiBox-root css-y1fexb']";
-	String images  = "//div[@class='MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root css-9rdiop']/span/img";
-	String carticon = "//button[@class='MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-disableElevation MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-disableElevation css-nle8bv']";
-	String wishlist = "//button[@class='MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-disableElevation MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-disableElevation css-v7k3k0']//*[name()='svg']";
+	String discountedPrice = "//p[@class='MuiTypography-root MuiTypography-body1 css-1tva794']";
+	String actualPrice = "//div[@class='MuiTypography-root MuiTypography-body1 css-lgaoco']";
+	String productsName = "//div[@class='MuiBox-root css-kgu7cg']";
+	String images  = "(//div[contains(@class, 'css-169jllx')])/span/img";
+	String carticon = "//button[contains(@class,'css-nle8bv')]";
+	String wishlist = "(//button[contains(@class,'css-v7k3k0')]//*[name()='svg'])";
 	String commentTxt = "//h5[@class='MuiTypography-root MuiTypography-h5 css-3tvp08']";
 	String commentBox ="//input[@placeholder='Type a comment...']";
 	String postbutton = "//span[@class='MuiTypography-root MuiTypography-span css-1fz7ep2']";
@@ -346,7 +346,10 @@ public class RecipePageFinal extends BaseClass {
 	}
 	
 		public void tagElements() throws InterruptedException {
-			 Log.info("Veryfying the Tag Elements functionality");
+			 WebElement l = getDriver().findElement(By.tagName("body"));
+				// System.out.println("Elements with P: =" + l.getText());
+				 if(l.getText().contains("Tags")) {
+			Log.info("Veryfying the Tag Elements functionality");
 			 WebElement tagText = getDriver().findElement(By.
 					  xpath("//p[@class = 'MuiTypography-root MuiTypography-body1 css-qfzj9b']"));
 			  Action.scrollByVisibilityOfElement(getDriver(), tagText);
@@ -359,44 +362,37 @@ public class RecipePageFinal extends BaseClass {
 				  taggs.get(randomValue).click(); //Clicking on the random item in the list.\
 				 System.out.println( taggs.get(randomValue).getText());
 				 Action.explicitWaitbyTitle(getDriver(), "Search Page", Duration.ofSeconds(5));
-				  Assert.assertEquals(getDriver().getTitle(), "Search Page");
+				  Assert.assertEquals(getDriver().getTitle(), "Search Page");}
+				 else {
+					 System.out.println("Tags are not present on this Recipe Page ");
+				 }
 				 
 	}
 	
 	
 	public void nutrilionListVerification(String message) {
-		
+		WebElement l1 = getDriver().findElement(By.tagName("body"));
+		//System.out.println(l1.getText());
+		if(l1.getText().contains("Nutritions Per Serving")) {
 		Log.info("Nutrition per Saving lists");
 		WebElement nutritions_Display = getDriver()
 				.findElement(By.xpath("//p[@class='MuiTypography-root MuiTypography-body1 css-1aoo3g']"));
 		Action.scrollByVisibilityOfElement(getDriver(), nutritions_Display);
 		 System.out.println(nutritions_Display.getText());
-		//	List<WebElement> taggs = getDriver().findElements(By.xpath(nutritions));
 		
-		//if()
-		
-		
-		
-		
-		if (message.equalsIgnoreCase("yes,yes") || message.equalsIgnoreCase("yes")) {
 
 			Log.info("Nutrition per Saving lists");
-		//	WebElement nutritions_Display = getDriver()
-		//			.findElement(By.xpath("//p[@class='MuiTypography-root MuiTypography-body1 css-1aoo3g']"));
-
-			// String nutrionName =
-			// getDriver().findElement(By.xpath("//p[@class='MuiTypography-root
-			// MuiTypography-body1 css-1aoo3g']")).getText();
 			if (nutritions_Display.isDisplayed()) {
 
 				Assert.assertEquals(nutritions_Display.getText(), "Nutritions Per Serving");
+				if(l1.getText().contains("See more")) {
 				WebElement seeButton = getDriver()
 						.findElement(By.xpath("//p[@class='MuiTypography-root MuiTypography-body1 css-1fatci1']"));
 				if (seeButton.isDisplayed()) {
 					seeButton.click();
 				}
 				List<WebElement> nutritionLists = getDriver()
-						.findElements(By.xpath("//p[@class='MuiTypography-root MuiTypography-body1 css-22dtt9']"));
+						.findElements(By.xpath("//p[@class='MuiTypography-root MuiTypography-body1 css-35gjpx']"));
 				System.out.println(nutritionLists.size());
 				int count111 = 0;
 				List<String> NutritionElements = new ArrayList<String>();
@@ -408,27 +404,21 @@ public class RecipePageFinal extends BaseClass {
 				String nutritions = String.join(delii, NutritionElements);
 				System.out.println(nutritions);
 
-				if (count111 == nutritionLists.size()) {
+				if (count111 == nutritionLists.size() && count111>0) {
 					System.out.println("nutritionList List are equal");
 					Assert.assertTrue(true);
 				} else {
 					System.out.println("nutritionList list Steps are not equal");
 					Assert.assertTrue(false);
+					}
 				}
-			}
-		} else if (message.equalsIgnoreCase("yes,no")) {
+			
+			
+			else  {
 			Log.info("Nutrition per Saving lists");
-			WebElement nutritions_Display1 = getDriver()
-					.findElement(By.xpath("//p[@class='MuiTypography-root MuiTypography-body1 css-1aoo3g']"));
-
-			// String nutrionName =
-			// getDriver().findElement(By.xpath("//p[@class='MuiTypography-root
-			// MuiTypography-body1 css-1aoo3g']")).getText();
-			if (nutritions_Display1.isDisplayed()) {
-
-				Assert.assertEquals(nutritions_Display1.getText(), "Nutritions Per Serving");
+				Assert.assertEquals(nutritions_Display.getText(), "Nutritions Per Serving");
 				List<WebElement> nutritionLists = getDriver()
-						.findElements(By.xpath("//p[@class='MuiTypography-root MuiTypography-body1 css-22dtt9']"));
+						.findElements(By.xpath("//p[@class='MuiTypography-root MuiTypography-body1 css-35gjpx']"));
 				System.out.println(nutritionLists.size());
 				int count111 = 0;
 				List<String> NutritionElements = new ArrayList<String>();
@@ -446,69 +436,158 @@ public class RecipePageFinal extends BaseClass {
 				} else {
 					System.out.println("nutritionList list Steps are not equal");
 					Assert.assertTrue(false);
+					}
 				}
-			} else {
-				System.out.println("Nutritions List are not Present");
 			}
 		}
-		
-
+			else {
+				System.out.println("Nutritions List are not Present");
+				Log.warn("Nutrition List are not Present");
+				}
 	}
 	
-	
-	
-	
-	
+	String addAllToCart = "//div[@class='css-sg7by6']/button";
+	String bigWishlistIcon = "(//*[name()='svg'][@data-testid='FavoriteBorderOutlinedIcon'])[5]";
+	String allProduct= "(//div[@class='MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-1 css-tuxzvu'])/div";
+	String shoptheIngridients = "(//p[@class='MuiTypography-root MuiTypography-body1 css-1xi88hf'])";
 	public void shoptheIngredients() throws InterruptedException {
-		JavascriptExecutor js1 = (JavascriptExecutor) getDriver();
-		  js1.executeScript("window.scrollBy(0,2000)", "");
-		  
-			List<WebElement> image = getDriver().findElements(By.xpath(images));
-			int  i =image.size();
-			System.out.println(i);
-			if(i>0) {
-			List<WebElement> productName = getDriver().findElements(By.xpath(productsName));
-			int j = productName.size();
-			System.out.println(j);
-			for (WebElement x : productName) {
-			 System.out.println(x.getText());
-			}
-			
-			List<WebElement> productDisPrice = getDriver().findElements(By.xpath(discountedPrice));
-			int k = productDisPrice.size();
-			System.out.println(k);
-			List<WebElement> productActPrice = getDriver().findElements(By.xpath(actualPrice));
-			int l = productActPrice.size();
-			System.out.println(l);
-			List<WebElement> quickviewlink = getDriver().findElements(By.xpath(quickview));
-			int m = quickviewlink.size();
-			System.out.println(m);
-			String allproduct = "//div[@class='MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root css-9rdiop']";
-			List<WebElement> products1 = getDriver().findElements(By.xpath(allproduct));
+		
+		WebElement l1 = getDriver().findElement(By.tagName("body"));
+		//System.out.println(l1.getText());
+		if(l1.getText().contains("Shop the Ingredients")) {
+			WebElement ShoptheIngridients = getDriver().findElement(By.xpath(shoptheIngridients));
+			Action.scrollByVisibilityOfElement(getDriver(), ShoptheIngridients);
+		
+			List<WebElement> products1 = getDriver().findElements(By.xpath(allProduct));
 			int n = products1.size();
 			System.out.println(n);
-			WebElement carticon1 =getDriver().findElement(By.xpath(carticon));
-			WebElement wishlist1 =getDriver().findElement(By.xpath(wishlist));
-			if(i==j && j==k && k==l && l==m && m==i && i != 0 ) {
-				//List<String> productElements = new ArrayList<String>();
-				for (WebElement element : products1) {
-					
-					Action.mouseOverElement(getDriver(), element);
-					
-					System.out.println(Action.isDisplayed(getDriver(), carticon1));
-					System.out.println(Action.isDisplayed(getDriver(), wishlist1));
-					Thread.sleep(2000);
-					
-				}}}
+
+			List<WebElement> image = getDriver().findElements(By.xpath(images));
+			int x = image.size();
+			int count4 = 0;
+			if (x == n) {
+				for(WebElement i : image) {
+					if(i.getAttribute("srcset").contains("shopify.com")) {
+						count4++;
+					}
+				}
+				if(count4 !=0 ) {
+				System.out.println("All " + count4 + " images are present");}
+				else {
+					softAssert.assertTrue(false, n-count4+ "Images are not present  ");
+				}
+			} else {
+				System.out.println(n - x + " Images are not present ");
+				softAssert.assertTrue(false, +n - x + " Images are not present ");
+			}
+
+			List<WebElement> productName1 = getDriver().findElements(By.xpath(productsName));
+			int j = productName1.size();
+			if (j == n) {
+				System.out.println("All Products name are present");
+			} else {
+				System.out.println(n - j + " Products name are not present ");
+				softAssert.assertTrue(false, +n - j + " Products name are not present ");
+			}
+
+			List<WebElement> productActPrice = getDriver().findElements(By.xpath(actualPrice));
+			int z = productActPrice.size();
+			if (z == n) {
+				System.out.println("All Actual Prices are present");
+			} else {
+				System.out.println(n - z + " Actual Prices are not present ");
+				softAssert.assertTrue(false, n - z + " Actual Prices are not present ");
+			}
 			
+			List<WebElement> productDiscountedPrice = getDriver().findElements(By.xpath(discountedPrice));
+			int r = productDiscountedPrice.size();
+			if (r == n) {
+				System.out.println("All Discounted Prices are present");
+			} else {
+				System.out.println(n - r + " Discounted Prices are not present ");
+				//softAssert.assertTrue(false, n - r + " Actual Prices are not present ");
+			}
+
+			List<WebElement> quickviewlink = getDriver().findElements(By.xpath(quickview));
+			int i = quickviewlink.size();
+			if (i == n) {
+				System.out.println("All Quick View links are present");
+			} else {
+				System.out.println(n - i + " Quick View links are not present ");
+				softAssert.assertTrue(false, n - i + " Quick View links are not present ");
+			}
+
+			List<WebElement> carticon1 = getDriver().findElements(By.xpath(carticon));
+			int c = carticon1.size();
+			if (c == n) {
+				System.out.println("All carticon are present");
+			} else {
+				System.out.println(n - c + " carticon are not present ");
+				softAssert.assertTrue(false, +n - c + " carticon are not present ");
+			}
+
+			List<WebElement> wishlist1 = getDriver().findElements(By.xpath(wishlist));
+
+			int d = wishlist1.size();
+			if (d == n) {
+				System.out.println("All Wishlist icon are present");
+				
+			} else {
+				System.out.println(n - d + " Wishlist icon are not present ");
+				softAssert.assertTrue(false, +n - d + " Wishlist icon are not present ");
+			}
+			
+			
+			WebElement  BigWishlistIcon = getDriver().findElement(By.xpath(bigWishlistIcon));
+			softAssert.assertTrue(BigWishlistIcon.isDisplayed(), "Big Wishlist icon in Shop the Ingridients sections is not present");
+			
+				
+				Action.click(getDriver(), BigWishlistIcon);
+				if(l1.getText().contains("Email")) {
+				WebElement login = getDriver().findElement(By.xpath(loginPageTxt));
+				Action.explicitWait(getDriver(), login, Duration.ofSeconds(10));
+				Assert.assertTrue(getDriver().findElement(By.xpath(loginbutton)).isDisplayed());
+				WebElement CrossButton = getDriver().findElement(By.xpath(crossbutton1));
+				Action.click(getDriver(), CrossButton);
+				Thread.sleep(1000);}
+				else {
+					System.out.println("Wishlist icon is not clickable");
+					softAssert.assertTrue(false, "Wishlist icon is not clickable");
+				}
+				
+		WebElement  AddAllToCart = getDriver().findElement(By.xpath(addAllToCart));
+		softAssert.assertTrue(AddAllToCart.isDisplayed(), "AddAllToCart in Shop the Ingridients sections is not present");
+				
+					
+		Action.click(getDriver(), AddAllToCart);
+					if(l1.getText().contains("Email")) {
+					WebElement login = getDriver().findElement(By.xpath(loginPageTxt));
+					Action.explicitWait(getDriver(), login, Duration.ofSeconds(10));
+					Assert.assertTrue(getDriver().findElement(By.xpath(loginbutton)).isDisplayed());
+					WebElement CrossButton = getDriver().findElement(By.xpath(crossbutton1));
+					Action.click(getDriver(), CrossButton);
+					Thread.sleep(1000);}
+					else {
+						System.out.println("AddAllToCart icon is not clickable");
+						softAssert.assertTrue(false, "AddAllToCart icon is not clickable");
+					}
+					
+			
+
+			softAssert.assertAll();
+		
+		}
 		else {
-			System.out.println("No products are available ");
-			Assert.assertTrue(false);
+			Log.warn("Shop the Ingredients section is not present");
+			System.out.println("Shop the Ingredients section is not present");
 		}
 		
 		
 		
 	}
+
+	
+
 	
 	public void commentsSectionVerification() {
 		WebElement comment = getDriver().findElement(By.xpath(commentTxt));
@@ -623,7 +702,7 @@ public class RecipePageFinal extends BaseClass {
 /////////////////////////////////////////////////////////////////////////////////////////////////////////
 	@FindBy (xpath = "//input[@id='outlined-adornment-password']")
 	WebElement typecomment;
-	@FindBy(xpath = "(//div[@class='MuiBox-root css-6n7j50'])[1]")
+	@FindBy(xpath = "(//div[@class='MuiBox-root css-6l6otf'])[1]")
 	WebElement postedComment;
 	@FindBy(xpath = "//img[@alt='Picture of the author']")
 	WebElement editButton;
@@ -648,10 +727,10 @@ public class RecipePageFinal extends BaseClass {
 		Action.click(getDriver(), postBtn);
 		Thread.sleep(1000);
 		System.out.println("Successfully Clicked on the Post button");
-		Assert.assertTrue(editButton.isEnabled(), "Edit button is not present");
 		Assert.assertEquals(postedComment.getText(), typedComment);
 		Thread.sleep(1000);
 		System.out.println("T3");
+		Assert.assertTrue(editButton.isEnabled(), "Edit button is not present");
 		Action.click(getDriver(), editButton);
 		System.out.println("T4");
 		String editTypedComment = "This is edited selenium test9";

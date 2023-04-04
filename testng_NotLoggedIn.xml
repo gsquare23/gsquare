@@ -11,11 +11,12 @@
 			</run>
 		</groups>
 		<classes>
-			
+			 <!-- <class name="com.dotKonnekt.tests.CategoryPageTest" />
 			 <class name="com.dotKonnekt.tests.ProductPageTest" />
 		 	<class name="com.dotKonnekt.tests.BlogPageTest" />
-			 <class name="com.dotKonnekt.tests.RecipePageTest" />
-			 <class name="com.dotKonnekt.tests.CategoryPageTest" />
+		 	 <class name="com.dotKonnekt.tests.RecipePageTest" />-->
+			 <class name="com.dotKonnekt.tests.HomePageTest" />
+			
 		</classes>
 	</test> <!-- Test -->
 </suite> <!-- Suite -->

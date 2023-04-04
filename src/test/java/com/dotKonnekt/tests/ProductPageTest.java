@@ -185,9 +185,19 @@ String bd_Home = "(//li[@class='MuiBreadcrumbs-li'])/a";
 		
 		productPage = new ProductPage();
 		launchApp_V1(browser, url);
-		productPage.productTiltProducts();
-		//productPage.productElementsVerification();
+		productPage.productElementsVerification();
 		Log.endTestCase("ProductPage_ProductElements");
+	}
+	
+	@Test(dataProvider = "ProductPage1", dataProviderClass = DataProviders.class, enabled = true, groups = "NotLoggedIn", dependsOnMethods = { "ProductPage_weFoundOtherProducts" })
+	public void ProductPage_ProductTileProducts(String page, String title, String browser, String url, String CategoryElements, String WelcomeMsg) throws InterruptedException {
+	Log.startTestCase("ProductPage_ProductTileProducts");
+		
+		productPage = new ProductPage();
+		launchApp_V1(browser, url);
+		productPage.productTiltProducts();
+		
+		Log.endTestCase("ProductPage_ProductTileProducts");
 	}
 	
 	@Test(dataProvider = "ProductPage1", dataProviderClass = DataProviders.class, enabled = true, groups = "NotLoggedIn")

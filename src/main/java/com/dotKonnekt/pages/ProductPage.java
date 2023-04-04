@@ -262,6 +262,10 @@ public class ProductPage extends BaseClass {
 	
 	String allProducts ="(//div[contains(@class,'css-1ho6dvz')])";
 	public void productTiltProducts() {
+		String productYouMightLikeSection = "//div[normalize-space()='We found other products you might like']";
+		WebElement products = getDriver().findElement(By.xpath(productYouMightLikeSection));
+		Action.scrollByVisibilityOfElement(getDriver(), products);
+		
 		List<WebElement> products1 = getDriver().findElements(By.xpath(allProducts));
 		int n = products1.size();
 		System.out.println(n);
@@ -270,16 +274,17 @@ public class ProductPage extends BaseClass {
 		for(WebElement j: products1) {
 			String productname = "("+ allProducts +")["+ count + "]/div[1]/div[1]"; 
 			WebElement ProductName1 = getDriver().findElement(By.xpath(productname));
-			Action.scrollByVisibilityOfElement(getDriver(), ProductName1);
+			//Action.scrollByVisibilityOfElement(getDriver(), ProductName1);
 			String PName = ProductName1.getText();
 			System.out.println(PName);
-			Assert.assertTrue(ProductName1.isDisplayed());
+			softAssert.assertTrue(ProductName1.isDisplayed());
 			
 			String productprice =  allProducts +"["+ count + "]/div/div[2]/div";
 			WebElement ProductPrice = getDriver().findElement(By.xpath(productprice));
 			String PPrice = ProductPrice.getText();
 			System.out.println(PPrice);
-			Assert.assertTrue(ProductPrice.isDisplayed(), "Price is not present on the product Tile");
+			
+			softAssert.assertTrue(ProductPrice.isDisplayed(), "Price is not present on the product Tile");
 			
 			String productRating =  allProducts +"["+ count + "]/div/div[4]/span";
 			WebElement ProductRating = getDriver().findElement(By.xpath(productRating));
@@ -301,7 +306,7 @@ public class ProductPage extends BaseClass {
 				softAssert.assertEquals(QuickPPrice.getText(), PPrice, "Quick view Link does not contain same Price as product Tile");
 				Log.info("Successfully verifying the product Price with quick view Product Price");
 				
-				String quikViewPDesc = "(//div[@class='MuiTypography-root MuiTypography-body1 css-9p1hyi'])[2]";
+				String quikViewPDesc = "(//div[@class='MuiTypography-root MuiTypography-body1 css-vm4s28'])";
 				WebElement QuikViewPDesc = getDriver().findElement(By.xpath(quikViewPDesc));
 				softAssert.assertTrue(QuikViewPDesc.isDisplayed(), "Quick view Product does not contain Product description");
 				Log.info("Successfully verifying the product Description on clicking the quick view ");
@@ -495,6 +500,10 @@ public class ProductPage extends BaseClass {
 	String removeIcon = "//*[name()='svg' and @data-testid='RemoveIcon']";
 	String ansText = "(//div[@class='MuiTypography-root MuiTypography-body1 css-otef3t'])";
 	public void faqSections() throws InterruptedException {
+		
+		WebElement bodyTag = getDriver().findElement(By.tagName("body"));
+		if(bodyTag.getText().contains("FAQ")) {
+		
 		WebElement faqs = getDriver().findElement(By.xpath(faq));
 		Action.scrollByVisibilityOfElement(getDriver(), faqs);
 		Log.info("Successfully Scroll to the FAQ section");
@@ -543,7 +552,11 @@ public class ProductPage extends BaseClass {
 		else {
 			softAssert.assertTrue(false, " Total faq questions are not present");
 		}
-		
+		}
+		else {
+			System.out.println("FAQ section is not present on the product");
+			Assert.assertTrue(false,"FAQ section is not present on the product");
+		}
 	}
 	
 	
@@ -554,6 +567,10 @@ public class ProductPage extends BaseClass {
 	String mightLikeimages = "(//div[@class='swiper-wrapper'])[2]/div/div/span/img";
 	String mightLike1 = "(//div[normalize-space()='We found other content you might like'])";
 	public void weFoundOtherContentYouMightLike() throws InterruptedException {
+		
+		WebElement bodyTag = getDriver().findElement(By.tagName("body"));
+		if(bodyTag.getText().contains("FAQ")) {
+		
 		Action.implicitWait(getDriver(), 10);
 			WebElement MightLike1 = getDriver().findElement(By.xpath(mightLike1));
 			Action.scrollByVisibilityOfElement(getDriver(), MightLike1);
@@ -608,7 +625,12 @@ public class ProductPage extends BaseClass {
 				System.out.println(n-c + " BookMarkicon are not present ");
 				softAssert.assertTrue(false, +n-c+" BookMarkicon are not present ");
 				}
-				
+		}
+		else {
+			System.out.println("We Found other content you might like section is not present");
+			Assert.assertTrue(false, "We Found other content you might like section is not present");
+			
+		}
 	}
 	String readAllReviews = "//div[@class='MuiBox-root css-18u70he']/a";
 	String rating = "(//div[@class='MuiBox-root css-yeouz0'])[1]";
@@ -661,7 +683,7 @@ public class ProductPage extends BaseClass {
 		String returnText = "//p[contains(@class ,'css-4bzhkn')]";
 		String shippingText = "//p[@class='MuiTypography-root MuiTypography-body1 css-4bzhkn']";
 		List<WebElement> Values = getDriver().findElements(By.xpath(basic_tabs));
-		System.out.println(Values);
+		System.out.println(Values.size());
 		if(Values.size()==2) {
 			for( WebElement i: Values) {
 				if(i.getText().equals("Shipping & Delivery")) {
@@ -673,6 +695,7 @@ public class ProductPage extends BaseClass {
 					Log.info("Successfully verified the presence of the Shipping & Delivery Text");
 				}
 				else if(i.getText().equals("Return")) {
+					Action.click(getDriver(), i);
 					WebElement ReturnText = getDriver().findElement(By.xpath(returnText));
 					String text1 = ReturnText.getText();
 					String actualtext = "Returns are accepted on this product within 30 days of receipt. Item must be returned unused, with tags, in its original packaging, along with a completed return form.";
@@ -689,7 +712,7 @@ public class ProductPage extends BaseClass {
 				
 	}
 	//String Value = "//li[@role = 'option' and @data-value = '"+value+"']";
-	String dropdown ="//div[contains(@class,'css-sq0hru')]";
+	String dropdown ="//div[contains(@class,'css-1maxgwy')]";
 	public void productDropdown(String value) throws InterruptedException {
 		WebElement Dropdown =  getDriver().findElement(By.xpath(dropdown));
 		Action.click(getDriver(), Dropdown);

@@ -191,31 +191,42 @@ public class CategoryPage extends BaseClass{
 	
 	
 	
-	 String allproduct ="//div[@class='MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root css-1y49jfj']";
+	 String allproduct ="//div[contains(@class,'css-i25sow')]";
 	String quickview = "//p[@class='MuiTypography-root MuiTypography-body1 css-xrfgiq']";
 	String discountedPrice = "//p[@class='MuiTypography-root MuiTypography-body1 css-1tva794']";
 	String actualPrice = "//div[@class='MuiTypography-root MuiTypography-body1 css-lgaoco']";
 	String productsName = "//div[@class='MuiBox-root css-kgu7cg']";
-	String images  = "//div[@class='MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root css-1y49jfj']/span/img";
+	String images  = "//div[@class='MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root css-1ho6dvz']/span/img";
 	String carticon = "//*[name()='svg' and @data-testid='ShoppingCartOutlinedIcon']";
 	String wishlist = "//*[name()='svg' and @data-testid='FavoriteBorderOutlinedIcon']";
 	SoftAssert softAssert = new SoftAssert();
 	
-		public void newArrival() throws InterruptedException {
+	public void newArrival() throws InterruptedException {
+		WebElement bodyText = getDriver().findElement(By.tagName("body"));
+		if(bodyText.getText().contains("Filter by:")){
+			String pagination = "(//div[@class='MuiBox-root css-efl1h4']//div[@class='MuiBox-root css-1sfz9yc']/nav/ul/li/button)";
+				if (bodyText.getText().contains("Previous")) {
+					int PaginationValue = getDriver().findElements(By.xpath(pagination)).size();
+
+					List<String> values = new ArrayList<String>();
+					for (int q = 2; q <= PaginationValue - 1; q++) {
+						Thread.sleep(700);
+						String paginationSelector = pagination + "[" + q + "]";
+						WebElement paginationSelectorClick = getDriver().findElement(By.xpath(paginationSelector));
+						Action.click(getDriver(), paginationSelectorClick);
+			
 		String filter = "//p[@class='MuiTypography-root MuiTypography-body1 css-1rp7iwk']";
 		WebElement filterBy = getDriver().findElement(By.xpath(filter));
 		Action.scrollByVisibilityOfElement(getDriver(), filterBy);
   
-		//List<WebElement> carticon1 =getDriver().findElements(By.xpath(carticon));
-		//List<WebElement> wishlist1 =getDriver().findElements(By.xpath(wishlist));
-		
-		
+		Thread.sleep(2000);
 		List<WebElement> products1 = getDriver().findElements(By.xpath(allproduct));
-		int n = products1.size();
-		System.out.println(n);
+		 int n = products1.size();
+		System.out.println("Products Present on this page " + n);
 	
 		
 		if(n>0) {
+			
 		List<WebElement> productName1 = getDriver().findElements(By.xpath(productsName));
 		int j = productName1.size();
 		if(j==n) {System.out.println("All Products name are present");}
@@ -242,11 +253,24 @@ public class CategoryPage extends BaseClass{
 		
 		List<WebElement> image = getDriver().findElements(By.xpath(images));
 		int x = image.size();
-		if(x==n) {System.out.println("All images are present");}
-			else {
-			System.out.println(n-x + " Images are not present ");
-			softAssert.assertTrue(false, +n-x+" Images are not present ");
+		int count4 = 0;
+		if (x == n) {
+			for(WebElement j1 : image) {
+				Action.mouseOverElement(getDriver(), j1);
+				//j1.getAttribute("srcset").contains("shopify.com")
+				if((Boolean) ((JavascriptExecutor)getDriver()) .executeScript("return arguments[0].complete " + "&& typeof arguments[0].naturalWidth != \"undefined\" " + "&& arguments[0].naturalWidth > 0", j1)) {
+					count4++;
+				}
 			}
+			if(count4 ==n ) {
+			System.out.println("All " + count4 + " images are present");}
+			else {
+				softAssert.assertTrue(false, n-count4+ " Images are not present  ");
+			}
+		} else {
+			System.out.println(n - x + " Images are not present ");
+			softAssert.assertTrue(false, +n - x + " Images are not present ");
+		}
 		
 		List<WebElement> carticon1 =getDriver().findElements(By.xpath(carticon));
 		int c = carticon1.size();
@@ -264,24 +288,16 @@ public class CategoryPage extends BaseClass{
 			System.out.println(n-d + " Wishlist icon are not present ");
 			softAssert.assertTrue(false, +n-c+" Wishlist icon are not present ");
 			}
-			/*
-			 * for(WebElement img : image) { Action.mouseOverElement(getDriver(), img);
-			 * Thread.sleep(1000); for(WebElement a : carticon1) { if(a.isDisplayed()) {
-			 * System.out.println("Cart Icon is present"); break; } else
-			 * {softAssert.assertTrue(false, " Cart icon is not present"); } }
-			 * 
-			 * for(WebElement b : wishlist1) { if(b.isDisplayed()) {
-			 * System.out.println("Wishlist Icon is present"); break; } else
-			 * {softAssert.assertTrue(false, " Wishlist icon is not present"); } } }
-			 */
-	
+		Log.info(q+ " pagination complete");
+		//softAssert.assertAll();
+		}
 		
+		else {System.out.println("No Products are available");}
+			}
+		}
+		else {Assert.assertTrue(false, "Products are not present in the New Arrival Sections");}
+		}
 		softAssert.assertAll();
-		}
-		else {
-			System.out.println("No Products are available");
-		}
-	
 	}
 		
 		

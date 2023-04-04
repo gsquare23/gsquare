@@ -262,12 +262,7 @@ public class RecipePageTest extends BaseClass {
 		
 		Log.startTestCase("-----------RecipePage_TaglistElementsVerification    Starts---------");
 		recipePage = new RecipePageFinal();
-		launchApp_V1(browser, prop.getProperty("LoginUrl"));
-		Log.startTestCase("Entering the data");
-		loginPage = new LoginPage();
-		loginPage.loginSetup(prop.getProperty("Username"), prop.getProperty("Password"));
-		getDriver().get(url);
-		//launchApp_V1(browser, url);
+		launchApp_V1(browser, url);
 		recipePage.tagElements();
 		Log.endTestCase("-----------RecipePage_TaglistElementsVerification    Ends---------");
 		
@@ -330,7 +325,44 @@ public class RecipePageTest extends BaseClass {
 
 		Log.endTestCase("-----------RecipePage_likeIconFunctionality    Ends---------");
 	}
+	
+	
+	@Test(dataProvider = "NewRecipePage1", dataProviderClass = DataProviders.class, enabled = false, groups = "LoggedIn")
+	public void RecipePage_TaglistElementsVerificationloggedIn(String page, String title, String browser, String url,
+			String CategoryElements, String AuthorName, String PublishDate, String Blogtitle, String nutritionList,
+			String see_more) throws InterruptedException {
+		
+		
+		Log.startTestCase("-----------RecipePage_TaglistElementsVerification    Starts---------");
+		recipePage = new RecipePageFinal();
+		
+		  launchApp_V1(browser, prop.getProperty("LoginUrl"));
+		  Log.startTestCase("Entering the data"); loginPage = new LoginPage();
+		  loginPage.loginSetup(prop.getProperty("Username"),
+		  prop.getProperty("Password")); getDriver().get(url);
+		recipePage.tagElements();
+		Log.endTestCase("-----------RecipePage_TaglistElementsVerification    Ends---------");
+		
+		
+	}
 
+	@Test(dataProvider = "NewRecipePage1", dataProviderClass = DataProviders.class, enabled = false, groups = "LoggedIn")
+	public void RecipePageToCheckoutPage(String page, String title, String browser, String url,
+			String CategoryElements, String AuthorName, String PublishDate, String Blogtitle, String nutritionList,
+			String see_more) throws InterruptedException {
+		Log.startTestCase("-----------RecipePageToCheckoutPage    Starts---------");
+		recipePage = new RecipePageFinal();
+		
+		  launchApp_V1(browser, prop.getProperty("LoginUrl"));
+		  Log.startTestCase("Entering the data"); loginPage = new LoginPage();
+		  loginPage.loginSetup(prop.getProperty("Username"),
+		  prop.getProperty("Password"));
+		  getDriver().get(url);
+		recipePage.tagElements();
+		Log.endTestCase("-----------RecipePageToCheckoutPage    Ends---------");
+	}
+	
+	
 	@AfterMethod(groups = { "LoggedIn", "NotLoggedIn" })
 	public void teardown() {
 		getDriver().close();

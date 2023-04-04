@@ -1,7 +1,9 @@
  package com.dotKonnekt.pages;
 
+import java.time.Duration;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Random;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -33,17 +35,17 @@ public class HomePage extends BaseClass{
 	public void clickOnCategory() {
 		getDriver().findElement(By.xpath(skin)).click();
 	}
-	String allProduct = "(//div[@class='swiper-wrapper'])[2]/div/div";
-	String carticon = "//*[name()='svg' and @data-testid='ShoppingCartOutlinedIcon']";
+	String allProduct = "((//div[@class='swiper-wrapper'])[2]/div/div)";
+	String carticon = "(//*[name()='svg' and @data-testid='ShoppingCartOutlinedIcon'])";
 	String wishlist = "//*[name()='svg' and @data-testid='FavoriteBorderOutlinedIcon']";
-	String quickview = "//p[@class='MuiTypography-root MuiTypography-body1 css-xrfgiq']";
+	String quickview = "(//p[@class='MuiTypography-root MuiTypography-body1 css-xrfgiq'])";
 	String discountedPrice = "//div[@class='MuiBox-root css-70qvj9']/p";
 	String actualPrice = "//div[@class='MuiTypography-root MuiTypography-body1 css-lgaoco']";
 	String productsName = "(//div[@class='swiper-wrapper'])[2]/div/div/div/div[1]";
 	String images = "(//div[@class='swiper-wrapper'])[2]/div/div/span/img";
 	SoftAssert softAssert = new SoftAssert();
 	String newArrivalSection = "//div[@class='MuiTypography-root MuiTypography-body1 css-1mmjkfi']";
-	public void newArrival() {
+	public void newArrival() throws InterruptedException {
 		WebElement NewArrivalSection  = getDriver().findElement(By.xpath(newArrivalSection));
 		Action.scrollByVisibilityOfElement(getDriver(), NewArrivalSection);
 		
@@ -56,13 +58,17 @@ public class HomePage extends BaseClass{
 		int count4 = 0;
 		if (x == n) {
 			for(WebElement i : image) {
+				Action.scrollByVisibilityOfElement(getDriver(), i);
+				Thread.sleep(500);
 				if(i.getAttribute("srcset").contains("shopify.com")) {
 					count4++;
 				}
+				
 			}
-			if(count4 !=0 ) {
+			if(count4 ==n && count4!=0 ) {
 			System.out.println("All " + count4 + " images are present");}
 			else {
+				System.out.println(n - x + " Images are not present ");
 				softAssert.assertTrue(false, n-count4+ "Images are not present  ");
 			}
 		} else {
@@ -193,10 +199,10 @@ public class HomePage extends BaseClass{
 		
 	}
 	
-	String askour = "//div[@class='MuiTypography-root MuiTypography-body1 css-bp10qf']";
-	String askDesc = "//p[@class='MuiTypography-root MuiTypography-body1 css-1lnopq3']";
+	String askour = "(//div[@class='MuiTypography-root MuiTypography-body1 css-bp10qf'])[2]";
+	String askDesc = "//p[@class='MuiTypography-root MuiTypography-body1 css-1x1xxzo']";
 	String experts = "(//div[@class='swiper-wrapper'])[3]/div";
-	String expertsImage = "(//div[@class='MuiBox-root css-2txfei'])/span/img";
+	String expertsImage = "(//div[@class='MuiBox-root css-155xjc6'])/span/img";
 	String newExperts = "//div[@class='MuiBox-root css-2txfei']";
 	String sendAMessage = "//div[@class='message MuiBox-root css-1ggpf2f']";
 	String expertName = "//div[@class='MuiBox-root css-1nj6oyt']";
@@ -217,7 +223,7 @@ public class HomePage extends BaseClass{
 		
 		List<WebElement> Experts = getDriver().findElements(By.xpath(experts));
 		Assert.assertEquals(Experts.size(), 3, " Total 3 experts are not Present" );
-		Log.info("Total 7 experts are present and successfully verified the presence");
+		Log.info("Total 3 experts are present and successfully verified the presence");
 		int n= Experts.size();
 		
 		
@@ -228,10 +234,12 @@ public class HomePage extends BaseClass{
 		if (x == n) {
 			for (WebElement i : ExpertsImage) {
 				Action.mouseOverElement(getDriver(), i);
+				Thread.sleep(500);
 				if (i.getAttribute("srcset").contains("amazonaws.com")) {
 					count5++;
 				}
 			}
+			System.out.println(count5);
 			if (count5 == n) {
 				System.out.println("All " + count5 + " images are present");
 			} else {
@@ -315,19 +323,22 @@ public class HomePage extends BaseClass{
 				Action.mouseOverElement(getDriver(), i);
 				if (i.getText().equals("Send a Message")) {
 					Action.isEnabled(getDriver(), i);
+					Thread.sleep(500);
 					System.out.println(" Send Message is present");
-					count6++;
+					
 					i.click();
-					Thread.sleep(3000);
+					//Thread.sleep(3000);
+				
+					
 					WebElement crossbutton = getDriver().findElement(By.xpath(crossbutton1));
-					Thread.sleep(3000);
 					crossbutton.click();
 					Thread.sleep(5000);
+					count6++;
 					//System.out.println(i);
 				}
 			}
 			System.out.println(count6);
-			if (count6 == 7) {
+			if (count6 == 3) {
 				System.out.println("All " + count6 + " Send Message are present");
 			} else {
 				softAssert.assertTrue(false, 3 - count6 + " Send Message are not present  ");
@@ -410,11 +421,111 @@ public class HomePage extends BaseClass{
 	}
 	
 	
+	public void endToEndScenarioHomePageByClickingProductTile() throws InterruptedException {
+		Log.info("endToEndScenarioHomePageByClickingProductTile ---  Starts");
+		WebElement NewArrivalSection  = getDriver().findElement(By.xpath(newArrivalSection));
+		Action.scrollByVisibilityOfElement(getDriver(), NewArrivalSection);
+		
+		List<WebElement> products1 = getDriver().findElements(By.xpath(allProduct));
+		int n = products1.size();
+		System.out.println(n);
+		 Random r = new Random(); 
+		  int randomValue = r.nextInt(products1.size());//Getting a random value that is between 0 and (list's size)-1
+		  System.out.println(randomValue);
+		  String product = allProduct+"["+randomValue+"]";
+				  WebElement Product = getDriver().findElement(By.xpath(product));
+				  Action.click(getDriver(), Product);
+				  System.out.println(Product.getText());
+		 Action.explicitWaitbyTitle(getDriver(), "Product", Duration.ofSeconds(5));
+		  Assert.assertEquals(getDriver().getTitle(), "Product");
+		  Log.info("Successfully verified the title of the Product page from search Page");
+		  
+		  Log.info("endToEndScenarioHomePageByClickingProductTile- -- Ends ");
+	}
+	
+	String checkoutBtn = "//div[@class='MuiBox-root css-1rtfqxi']/button";
+	String cart = "//div[@class='MuiBox-root css-1p3qk0r']//img[@alt='logo']";
+	public void ByCartIcon() throws InterruptedException {
+		Log.info("endToEndScenarioHomePageByClickingProductTile ---  Starts");
+		WebElement NewArrivalSection  = getDriver().findElement(By.xpath(newArrivalSection));
+		Action.scrollByVisibilityOfElement(getDriver(), NewArrivalSection);
+		
+		List<WebElement> image = getDriver().findElements(By.xpath(images));
+		int n = image.size();
+		System.out.println(n);
+		 Random r = new Random(); 
+		  int randomValue = r.nextInt(image.size());//Getting a random value that is between 0 and (list's size)-1
+		  System.out.println(randomValue);
+		  String cart = carticon+"["+randomValue+"]";
+		  int count =0;
+		  for(WebElement i : image) {
+			  Action.mouseOverElement(getDriver(), i);
+			  count++;
+			  Thread.sleep(100);
+			  if(count == randomValue) {
+				  String cart1 = carticon+"["+randomValue+"]";
+				  System.out.println(cart1);
+				  WebElement Cart1 = getDriver().findElement(By.xpath(cart1));
+				  Assert.assertTrue(Cart1.isEnabled(), "Cart icon is not enabled");
+				  Action.click(getDriver(), Cart1);
+				  break;
+			  }
+			  
+		  }
+		  
+		  Log.info("sdfgsdfghj");
+		  JavascriptExecutor js = (JavascriptExecutor) getDriver();
+	        js.executeScript("javascript:window.scrollBy(0,0)");
+		  Log.info("jhdkhkdkcbkc");
+		  
+		  WebElement cartIcon  =  getDriver().findElement(By.xpath(cart));
+			Action.scrollByVisibilityOfElement(getDriver(), cartIcon);
+		  Action.click(getDriver(), cartIcon);
+		  	Thread.sleep(2000);
+			WebElement CheckoutBtn = getDriver().findElement(By.xpath(checkoutBtn));
+			Action.explicitWait(getDriver(), CheckoutBtn, Duration.ofSeconds(10));
+			Action.click(getDriver(), CheckoutBtn);
+			Action.explicitWaitbyTitle(getDriver(), "Checkout", Duration.ofSeconds(10));
+		  Log.info("endToEndScenarioHomePageByClickingProductTile- -- Ends ");
+	}
+	
+	
+	public void ByQuickView() throws InterruptedException {
+		Log.info("endToEndScenarioHomePageByClickingQuickView ---  Starts");
+		WebElement NewArrivalSection  = getDriver().findElement(By.xpath(newArrivalSection));
+		Action.scrollByVisibilityOfElement(getDriver(), NewArrivalSection);
+		
+		List<WebElement> products1 = getDriver().findElements(By.xpath(allProduct));
+		int n = products1.size();
+		System.out.println(n);
+		 Random r = new Random(); 
+		  int randomValue = r.nextInt(products1.size());//Getting a random value that is between 0 and (list's size)-1
+		  System.out.println(randomValue);
+		  String quick = quickview+"["+randomValue+"]";
+				  WebElement QuickView = getDriver().findElement(By.xpath(quick));
+				  Action.click(getDriver(), QuickView);
+				  System.out.println(QuickView.getText());
+		 //Action.explicitWaitbyTitle(getDriver(), "Product", Duration.ofSeconds(5));
+		//  Assert.assertEquals(getDriver().getTitle(), "Product");
+		  Log.info("Successfully verified the title of the Product page from search Page");
+		  
+		  Log.info("endToEndScenarioHomePageByClickingQuickView- -- Ends ");
+	}
+
+	
+	
+	
 	String newsLetter = "//*[name()='svg'][@data-testid = 'ClearIcon']";
-	public void NewsletterPopup () {
+	public void NewsletterPopup__Alert () {
 		WebElement NewsLetter = getDriver().findElement(By.xpath(newsLetter));
 		Action.click(getDriver(), NewsLetter);
 		getDriver().findElement(By.xpath("//button[normalize-space()='Accept']")).click();
+		Log.info("Successfully clicked on the newsLetter");
+	}
+	
+	public void onlyNewsLetter() {
+		WebElement NewsLetter = getDriver().findElement(By.xpath(newsLetter));
+		Action.click(getDriver(), NewsLetter);
 		Log.info("Successfully clicked on the newsLetter");
 	}
 	

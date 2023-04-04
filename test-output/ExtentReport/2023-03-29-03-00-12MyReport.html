@@ -1,0 +1,963 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>RecipePage Report</title>
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@b00a2d0486596e73dd7326beacf352c639623a0e/commons/img/logo.png">
+<link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@b00a2d0486596e73dd7326beacf352c639623a0e/commons/img/logo.png">
+<link href="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@d6562a79075e061305ccfdb82f01e5e195e2d307/spark/css/spark-style.css" rel="stylesheet" />
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@7cc78ce/spark/js/jsontree.js"></script>
+<style type="text/css"></style></head><body class="spa -report dark">
+  <div class="app">
+    <div class="layout">
+<div class="header navbar">
+<div class="vheader">
+<div class="nav-logo">
+<a href="#">
+<div class="logo" style="background-image: url('https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@b00a2d0486596e73dd7326beacf352c639623a0e/commons/img/logo.png')"></div>
+</a>
+</div>
+<ul class="nav-left">
+<li class="search-box">
+<a class="search-toggle" href="#">
+<i class="search-icon fa fa-search"></i>
+<i class="search-icon-close fa fa-close"></i>
+</a>
+</li>
+<li class="search-input"><input id="search-tests" class="form-control" type="text" placeholder="Search..."></li>
+</ul>
+<ul class="nav-right">
+<li class="m-r-10">
+<a href="#"><span class="badge badge-primary"> My Report
+<img src='C:\Users\garvi\eclipse-workspace\RecipePage2\Logo\recipe-logo.png' />
+</span></a>
+</li>
+<li class="m-r-10">
+<a href="#"><span class="badge badge-primary">Mar 29, 2023 03:00:12 pm</span></a>
+</li>
+</ul>
+</div>
+</div><div class="side-nav">
+<div class="side-nav-inner">
+<ul class="side-nav-menu">
+<li class="nav-item dropdown" onclick="toggleView('dashboard-view')">
+<a id="nav-dashboard" class="dropdown-toggle" href="#">
+<span class="ico"><i class="fa fa-bar-chart"></i></span>
+</a>
+</li>
+<li class="nav-item dropdown" onclick="toggleView('test-view')">
+<a id="nav-test" class="dropdown-toggle" href="#">
+<span class="ico"><i class="fa fa-list"></i></span>
+</a>
+</li>
+</ul>
+</div>
+</div>      <div class="vcontainer">
+        <div class="main-content">
+<div class="container-fluid p-4 view dashboard-view">
+<div class="row">
+<div class="col-md-3">
+<div class="card"><div class="card-body">
+<p class="m-b-0">Started</p>
+<h3>Mar 29, 2023 03:00:12 pm</h3>
+</div></div>
+</div>
+<div class="col-md-3">
+<div class="card"><div class="card-body">
+<p class="m-b-0">Ended</p>
+<h3>Mar 29, 2023 03:04:56 pm</h3>
+</div></div>
+</div>
+<div class="col-md-3">
+<div class="card"><div class="card-body">
+<p class="m-b-0 text-pass">Tests Passed</p>
+<h3>10</h3>
+</div></div>
+</div>
+<div class="col-md-3">
+<div class="card"><div class="card-body">
+<p class="m-b-0 text-fail">Tests Failed</p>
+<h3>5</h3>
+</div></div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-6">
+<div class="card">
+<div class="card-header">
+<h6 class="card-title">Tests</h6>
+</div>
+<div class="card-body">
+<div class="">
+<canvas id='parent-analysis' width='115' height='90'></canvas>
+</div>
+</div>
+<div class="card-footer">
+<div><small data-tooltip='66%'>
+<b>10</b> tests passed
+</small>
+</div>
+<div>
+<small data-tooltip='33%'><b>5</b> tests failed,
+<b>0</b> skipped, <b data-tooltip='0%'>0</b> others
+</small>
+</div>
+</div>
+</div>
+</div>
+<div class="col-md-6">
+<div class="card">
+<div class="card-header">
+<h6 class="card-title">Log events</h6>
+</div>
+<div class="card-body">
+<div class="">
+<canvas id='events-analysis' width='115' height='90'></canvas>
+</div>
+</div>
+<div class="card-footer">
+<div><small data-tooltip='40%'><b>10</b> events passed</small></div>
+<div>
+<small data-tooltip='60%'><b>15</b> events failed,
+<b data-tooltip='%'>0</b> others
+</small>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row"><div class="col-md-12">
+<div class="card"><div class="card-header"><p>Timeline</p></div>
+<div class="card-body pt-0"><div>
+<canvas id="timeline" height="120"></canvas>
+</div></div>
+</div>
+</div></div>
+<script>
+var timeline = {
+"HomePage_CartFucntionalityVerification":13.138,"HomePage_NewArrival":41.967,"HomePage_PageHeaderVerification":10.55,"HomePage_SearchFucntionalityVerification":11.623,"HomePage_SendAMessageFunctionality":21.027,"HomePage_UserFunctionalityVerification":11.968,"HomePage_aboutUsSection":12.026,"HomePage_aboveAboutUsSection":12.542,"HomePage_askOurExpertSection":16.137,"HomePage_endToEndGuestScenarioByClickingProductCartIconGuestUSer":35.61,"HomePage_endToEndGuestScenarioByClickingProductTileGuestUSer":20.13,"HomePage_endToEndGuestScenarioByClickingProductTileLoggedIn":31.764,"HomePage_endToEndGuestScenarioByClickingQuickViewGuestUSer":20.208,"HomePage_shoutOutFromCustomers":10.735,"TitleVerification":8.7
+};
+</script>
+<div class="row">
+<div class="col-lg-6 col-md-12 sysenv-container">
+<div class="card">
+<div class="card-header"><p>System/Environment</p></div>
+<div class="card-body pb-0 pt-0"><table class="table table-sm table-bordered">
+<thead><tr class="bg-gray"><th>Name</th><th>Value</th></tr></thead>
+<tbody>
+<tr>
+<td>HostName</td>
+<td>DotKonnekt</td>
+</tr>
+<tr>
+<td>ProjectName</td>
+<td>DotKonnektWebsite</td>
+</tr>
+<tr>
+<td>Tester</td>
+<td>Garvit</td>
+</tr>
+<tr>
+<td>OS</td>
+<td>Win10</td>
+</tr>
+<tr>
+<td>Browser</td>
+<td>Chrome</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+</div>
+</div>
+<script>
+var statusGroup = {
+parentCount: 5,
+passParent: 10,
+failParent: 5,
+warningParent: 0,
+skipParent: 0,
+childCount: 5,
+passChild: 0,
+failChild: 0,
+warningChild: 0,
+skipChild: 0,
+infoChild: 0,
+grandChildCount: 5,
+passGrandChild: 0,
+failGrandChild: 0,
+warningGrandChild: 0,
+skipGrandChild: 0,
+infoGrandChild: 0,
+eventsCount: 5,
+passEvents: 10,
+failEvents: 15,
+warningEvents: 0,
+skipEvents: 0,
+infoEvents: 0
+};
+</script><div class="test-wrapper row view test-view">
+  <div class="test-list">
+    <div class="test-list-tools">
+<ul class="tools pull-left">
+<li><a href="#"><span class="font-size-14">Tests</span></a></li>
+</ul>
+<ul class="tools text-right">
+<li class="dropdown">
+<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-exclamation-circle"></i></a>
+<ul id="status-toggle" class="dropdown-menu dropdown-md p-v-0">
+<a class="dropdown-item" status="pass" href="#"><span>Pass</span><span class="status success"></span></a>
+<a class="dropdown-item" status="fail" href="#"><span>Fail</span><span class="status danger"></span></a>
+<div class="dropdown-divider"></div>
+<a status="clear" class="dropdown-item" href="#"><span>Clear</span><span class="pull-right"><i class="fa fa-close"></i></span></a>
+</ul>
+</li>
+</ul>
+</div>    <div class="test-list-wrapper scrollable">
+      <ul class="test-list-item">
+        <li class="test-item"  status="pass" test-id="1"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">HomePage_CartFucntionalityVerification</p>
+            <p class="text-sm">
+              <span>3:00:13 pm</span> / <span>00:00:13:138</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-pass">HomePage_CartFucntionalityVerification</h5>
+<span class='badge badge-success'>03.29.2023 3:00:13 pm</span>
+<span class='badge badge-danger'>03.29.2023 3:00:27 pm</span>
+<span class='badge badge-default'>00:00:13:138</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=1</span>
+<span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
+<span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
+</div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>3:00:27 pm</td>
+        <td>
+          Pass Test case is: HomePage_CartFucntionalityVerification
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="pass" test-id="2"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">HomePage_NewArrival</p>
+            <p class="text-sm">
+              <span>3:00:27 pm</span> / <span>00:00:41:967</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-pass">HomePage_NewArrival</h5>
+<span class='badge badge-success'>03.29.2023 3:00:27 pm</span>
+<span class='badge badge-danger'>03.29.2023 3:01:09 pm</span>
+<span class='badge badge-default'>00:00:41:967</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=2</span>
+<span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
+<span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
+</div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>3:01:09 pm</td>
+        <td>
+          Pass Test case is: HomePage_NewArrival
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="pass" test-id="3"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">HomePage_PageHeaderVerification</p>
+            <p class="text-sm">
+              <span>3:01:09 pm</span> / <span>00:00:10:550</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-pass">HomePage_PageHeaderVerification</h5>
+<span class='badge badge-success'>03.29.2023 3:01:09 pm</span>
+<span class='badge badge-danger'>03.29.2023 3:01:20 pm</span>
+<span class='badge badge-default'>00:00:10:550</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=3</span>
+<span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
+<span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
+</div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>3:01:20 pm</td>
+        <td>
+          Pass Test case is: HomePage_PageHeaderVerification
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="pass" test-id="4"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">HomePage_SearchFucntionalityVerification</p>
+            <p class="text-sm">
+              <span>3:01:20 pm</span> / <span>00:00:11:623</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-pass">HomePage_SearchFucntionalityVerification</h5>
+<span class='badge badge-success'>03.29.2023 3:01:20 pm</span>
+<span class='badge badge-danger'>03.29.2023 3:01:32 pm</span>
+<span class='badge badge-default'>00:00:11:623</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=4</span>
+<span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
+<span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
+</div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>3:01:32 pm</td>
+        <td>
+          Pass Test case is: HomePage_SearchFucntionalityVerification
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="fail" test-id="5"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">HomePage_SendAMessageFunctionality</p>
+            <p class="text-sm">
+              <span>3:01:32 pm</span> / <span>00:00:21:027</span>
+              <span class="badge fail-bg log float-right">Fail</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-fail">HomePage_SendAMessageFunctionality</h5>
+<span class='badge badge-success'>03.29.2023 3:01:32 pm</span>
+<span class='badge badge-danger'>03.29.2023 3:01:53 pm</span>
+<span class='badge badge-default'>00:00:21:027</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=5</span>
+<span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
+<span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
+</div>
+</div>
+</div>    <div class="row mb-3"><div class="col-md-3">
+<img data-featherlight='C:\Users\garvi\eclipse-workspace\RecipePage3\Screenshots\HomePage_SendAMessageFunctionality_2023-03-29-03-01-53.png' src="C:\Users\garvi\eclipse-workspace\RecipePage3\Screenshots\HomePage_SendAMessageFunctionality_2023-03-29-03-01-53.png">
+    
+    </div></div>
+<div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log fail-bg">Fail</span></td>
+        <td>3:01:53 pm</td>
+        <td>
+          <span class='badge white-text red'>HomePage_SendAMessageFunctionality - Test Case Failed</span>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log fail-bg">Fail</span></td>
+        <td>3:01:53 pm</td>
+        <td>
+          <span class='badge white-text red'>org.openqa.selenium.StaleElementReferenceException: stale element reference: element is not attached to the page document
+  (Session info: MicrosoftEdge=111.0.1661.54)
+For documentation on this error, please visit: https://selenium.dev/exceptions/#stale_element_reference
+Build info: version: '4.5.3', revision: '4b786a1e430'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.6'
+Driver info: org.openqa.selenium.edge.EdgeDriver
+Command: [88f9dca29bc0c851fc8a58a411772ec7, getElementText {id=170eefb9-e753-4fd2-8b0c-a23ea222ada9}]
+Capabilities {acceptInsecureCerts: false, browserName: msedge, browserVersion: 111.0.1661.54, ms:edgeOptions: {debuggerAddress: localhost:57598}, msedge: {msedgedriverVersion: 111.0.1661.54 (9e410ec23a36..., userDataDir: C:\Users\garvi\AppData\Loca...}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:57598/devtoo..., se:cdpVersion: 111.0.1661.54, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[EdgeDriver: msedge on WINDOWS (88f9dca29bc0c851fc8a58a411772ec7)] -> xpath: //div[@class='message MuiBox-root css-1ggpf2f']]
+Session ID: 88f9dca29bc0c851fc8a58a411772ec7 - Test Case Failed</span>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log fail-bg">Fail</span></td>
+        <td>3:01:53 pm</td>
+        <td>
+          ScreenShot is Attached
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="pass" test-id="6"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">HomePage_UserFunctionalityVerification</p>
+            <p class="text-sm">
+              <span>3:01:53 pm</span> / <span>00:00:11:968</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-pass">HomePage_UserFunctionalityVerification</h5>
+<span class='badge badge-success'>03.29.2023 3:01:53 pm</span>
+<span class='badge badge-danger'>03.29.2023 3:02:05 pm</span>
+<span class='badge badge-default'>00:00:11:968</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=6</span>
+<span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
+<span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
+</div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>3:02:05 pm</td>
+        <td>
+          Pass Test case is: HomePage_UserFunctionalityVerification
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="pass" test-id="7"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">HomePage_aboutUsSection</p>
+            <p class="text-sm">
+              <span>3:02:05 pm</span> / <span>00:00:12:026</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-pass">HomePage_aboutUsSection</h5>
+<span class='badge badge-success'>03.29.2023 3:02:05 pm</span>
+<span class='badge badge-danger'>03.29.2023 3:02:18 pm</span>
+<span class='badge badge-default'>00:00:12:026</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=7</span>
+<span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
+<span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
+</div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>3:02:18 pm</td>
+        <td>
+          Pass Test case is: HomePage_aboutUsSection
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="pass" test-id="8"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">HomePage_aboveAboutUsSection</p>
+            <p class="text-sm">
+              <span>3:02:18 pm</span> / <span>00:00:12:542</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-pass">HomePage_aboveAboutUsSection</h5>
+<span class='badge badge-success'>03.29.2023 3:02:18 pm</span>
+<span class='badge badge-danger'>03.29.2023 3:02:30 pm</span>
+<span class='badge badge-default'>00:00:12:542</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=8</span>
+<span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
+<span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
+</div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>3:02:30 pm</td>
+        <td>
+          Pass Test case is: HomePage_aboveAboutUsSection
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="pass" test-id="9"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">HomePage_askOurExpertSection</p>
+            <p class="text-sm">
+              <span>3:02:31 pm</span> / <span>00:00:16:137</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-pass">HomePage_askOurExpertSection</h5>
+<span class='badge badge-success'>03.29.2023 3:02:31 pm</span>
+<span class='badge badge-danger'>03.29.2023 3:02:47 pm</span>
+<span class='badge badge-default'>00:00:16:137</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=9</span>
+<span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
+<span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
+</div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>3:02:47 pm</td>
+        <td>
+          Pass Test case is: HomePage_askOurExpertSection
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="fail" test-id="10"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">HomePage_endToEndGuestScenarioByClickingProductCartIconGuestUSer</p>
+            <p class="text-sm">
+              <span>3:02:47 pm</span> / <span>00:00:35:610</span>
+              <span class="badge fail-bg log float-right">Fail</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-fail">HomePage_endToEndGuestScenarioByClickingProductCartIconGuestUSer</h5>
+<span class='badge badge-success'>03.29.2023 3:02:47 pm</span>
+<span class='badge badge-danger'>03.29.2023 3:03:23 pm</span>
+<span class='badge badge-default'>00:00:35:610</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=10</span>
+<span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
+<span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
+</div>
+</div>
+</div>    <div class="row mb-3"><div class="col-md-3">
+<img data-featherlight='C:\Users\garvi\eclipse-workspace\RecipePage3\Screenshots\HomePage_endToEndGuestScenarioByClickingProductCartIconGuestUSer_2023-03-29-03-03-22.png' src="C:\Users\garvi\eclipse-workspace\RecipePage3\Screenshots\HomePage_endToEndGuestScenarioByClickingProductCartIconGuestUSer_2023-03-29-03-03-22.png">
+    
+    </div></div>
+<div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log fail-bg">Fail</span></td>
+        <td>3:03:22 pm</td>
+        <td>
+          <span class='badge white-text red'>HomePage_endToEndGuestScenarioByClickingProductCartIconGuestUSer - Test Case Failed</span>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log fail-bg">Fail</span></td>
+        <td>3:03:22 pm</td>
+        <td>
+          <span class='badge white-text red'>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for title to be "Checkout". Current title: "dot beauty" (tried for 10 second(s) with 500 milliseconds interval)
+Build info: version: '4.5.3', revision: '4b786a1e430'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.6'
+Driver info: org.openqa.selenium.edge.EdgeDriver
+Capabilities {acceptInsecureCerts: false, browserName: msedge, browserVersion: 111.0.1661.54, ms:edgeOptions: {debuggerAddress: localhost:57986}, msedge: {msedgedriverVersion: 111.0.1661.54 (9e410ec23a36..., userDataDir: C:\Users\garvi\AppData\Loca...}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:57986/devtoo..., se:cdpVersion: 111.0.1661.54, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 1ec2cce0c6adb4f72753e6ce64aa42a3 - Test Case Failed</span>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log fail-bg">Fail</span></td>
+        <td>3:03:23 pm</td>
+        <td>
+          ScreenShot is Attached
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="fail" test-id="11"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">HomePage_endToEndGuestScenarioByClickingProductTileGuestUSer</p>
+            <p class="text-sm">
+              <span>3:03:23 pm</span> / <span>00:00:20:130</span>
+              <span class="badge fail-bg log float-right">Fail</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-fail">HomePage_endToEndGuestScenarioByClickingProductTileGuestUSer</h5>
+<span class='badge badge-success'>03.29.2023 3:03:23 pm</span>
+<span class='badge badge-danger'>03.29.2023 3:03:43 pm</span>
+<span class='badge badge-default'>00:00:20:130</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=11</span>
+<span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
+<span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
+</div>
+</div>
+</div>    <div class="row mb-3"><div class="col-md-3">
+<img data-featherlight='C:\Users\garvi\eclipse-workspace\RecipePage3\Screenshots\HomePage_endToEndGuestScenarioByClickingProductTileGuestUSer_2023-03-29-03-03-43.png' src="C:\Users\garvi\eclipse-workspace\RecipePage3\Screenshots\HomePage_endToEndGuestScenarioByClickingProductTileGuestUSer_2023-03-29-03-03-43.png">
+    
+    </div></div>
+<div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log fail-bg">Fail</span></td>
+        <td>3:03:43 pm</td>
+        <td>
+          <span class='badge white-text red'>HomePage_endToEndGuestScenarioByClickingProductTileGuestUSer - Test Case Failed</span>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log fail-bg">Fail</span></td>
+        <td>3:03:43 pm</td>
+        <td>
+          <span class='badge white-text red'>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"xpath","selector":"((//div[@class='swiper-wrapper'])[2]/div/div)[0]"}
+  (Session info: MicrosoftEdge=111.0.1661.54)
+For documentation on this error, please visit: https://selenium.dev/exceptions/#no_such_element
+Build info: version: '4.5.3', revision: '4b786a1e430'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.6'
+Driver info: org.openqa.selenium.edge.EdgeDriver
+Command: [2f0f2ee42415af7a4271bb39378a8ee2, findElement {using=xpath, value=((//div[@class='swiper-wrapper'])[2]/div/div)[0]}]
+Capabilities {acceptInsecureCerts: false, browserName: msedge, browserVersion: 111.0.1661.54, ms:edgeOptions: {debuggerAddress: localhost:58073}, msedge: {msedgedriverVersion: 111.0.1661.54 (9e410ec23a36..., userDataDir: C:\Users\garvi\AppData\Loca...}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:58073/devtoo..., se:cdpVersion: 111.0.1661.54, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 2f0f2ee42415af7a4271bb39378a8ee2 - Test Case Failed</span>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log fail-bg">Fail</span></td>
+        <td>3:03:43 pm</td>
+        <td>
+          ScreenShot is Attached
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="fail" test-id="12"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">HomePage_endToEndGuestScenarioByClickingProductTileLoggedIn</p>
+            <p class="text-sm">
+              <span>3:03:43 pm</span> / <span>00:00:31:764</span>
+              <span class="badge fail-bg log float-right">Fail</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-fail">HomePage_endToEndGuestScenarioByClickingProductTileLoggedIn</h5>
+<span class='badge badge-success'>03.29.2023 3:03:43 pm</span>
+<span class='badge badge-danger'>03.29.2023 3:04:15 pm</span>
+<span class='badge badge-default'>00:00:31:764</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=12</span>
+<span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
+<span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
+</div>
+</div>
+</div>    <div class="row mb-3"><div class="col-md-3">
+<img data-featherlight='C:\Users\garvi\eclipse-workspace\RecipePage3\Screenshots\HomePage_endToEndGuestScenarioByClickingProductTileLoggedIn_2023-03-29-03-04-15.png' src="C:\Users\garvi\eclipse-workspace\RecipePage3\Screenshots\HomePage_endToEndGuestScenarioByClickingProductTileLoggedIn_2023-03-29-03-04-15.png">
+    
+    </div></div>
+<div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log fail-bg">Fail</span></td>
+        <td>3:04:15 pm</td>
+        <td>
+          <span class='badge white-text red'>HomePage_endToEndGuestScenarioByClickingProductTileLoggedIn - Test Case Failed</span>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log fail-bg">Fail</span></td>
+        <td>3:04:15 pm</td>
+        <td>
+          <span class='badge white-text red'>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for title to be "dot beauty". Current title: "Login" (tried for 5 second(s) with 500 milliseconds interval)
+Build info: version: '4.5.3', revision: '4b786a1e430'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.6'
+Driver info: org.openqa.selenium.edge.EdgeDriver
+Capabilities {acceptInsecureCerts: false, browserName: msedge, browserVersion: 111.0.1661.54, ms:edgeOptions: {debuggerAddress: localhost:58147}, msedge: {msedgedriverVersion: 111.0.1661.54 (9e410ec23a36..., userDataDir: C:\Users\garvi\AppData\Loca...}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:58147/devtoo..., se:cdpVersion: 111.0.1661.54, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: cdda604fcf5be33bfea9a467c5b4c34b - Test Case Failed</span>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log fail-bg">Fail</span></td>
+        <td>3:04:15 pm</td>
+        <td>
+          ScreenShot is Attached
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="fail" test-id="13"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">HomePage_endToEndGuestScenarioByClickingQuickViewGuestUSer</p>
+            <p class="text-sm">
+              <span>3:04:15 pm</span> / <span>00:00:20:208</span>
+              <span class="badge fail-bg log float-right">Fail</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-fail">HomePage_endToEndGuestScenarioByClickingQuickViewGuestUSer</h5>
+<span class='badge badge-success'>03.29.2023 3:04:15 pm</span>
+<span class='badge badge-danger'>03.29.2023 3:04:35 pm</span>
+<span class='badge badge-default'>00:00:20:208</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=13</span>
+<span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
+<span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
+</div>
+</div>
+</div>    <div class="row mb-3"><div class="col-md-3">
+<img data-featherlight='C:\Users\garvi\eclipse-workspace\RecipePage3\Screenshots\HomePage_endToEndGuestScenarioByClickingQuickViewGuestUSer_2023-03-29-03-04-35.png' src="C:\Users\garvi\eclipse-workspace\RecipePage3\Screenshots\HomePage_endToEndGuestScenarioByClickingQuickViewGuestUSer_2023-03-29-03-04-35.png">
+    
+    </div></div>
+<div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log fail-bg">Fail</span></td>
+        <td>3:04:35 pm</td>
+        <td>
+          <span class='badge white-text red'>HomePage_endToEndGuestScenarioByClickingQuickViewGuestUSer - Test Case Failed</span>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log fail-bg">Fail</span></td>
+        <td>3:04:35 pm</td>
+        <td>
+          <span class='badge white-text red'>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"xpath","selector":"(//p[@class='MuiTypography-root MuiTypography-body1 css-k1juyd'])[5]"}
+  (Session info: MicrosoftEdge=111.0.1661.54)
+For documentation on this error, please visit: https://selenium.dev/exceptions/#no_such_element
+Build info: version: '4.5.3', revision: '4b786a1e430'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.6'
+Driver info: org.openqa.selenium.edge.EdgeDriver
+Command: [8cb25c759441af939f9307b948ed9eb5, findElement {using=xpath, value=(//p[@class='MuiTypography-root MuiTypography-body1 css-k1juyd'])[5]}]
+Capabilities {acceptInsecureCerts: false, browserName: msedge, browserVersion: 111.0.1661.54, ms:edgeOptions: {debuggerAddress: localhost:58232}, msedge: {msedgedriverVersion: 111.0.1661.54 (9e410ec23a36..., userDataDir: C:\Users\garvi\AppData\Loca...}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:58232/devtoo..., se:cdpVersion: 111.0.1661.54, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 8cb25c759441af939f9307b948ed9eb5 - Test Case Failed</span>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log fail-bg">Fail</span></td>
+        <td>3:04:35 pm</td>
+        <td>
+          ScreenShot is Attached
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="pass" test-id="14"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">HomePage_shoutOutFromCustomers</p>
+            <p class="text-sm">
+              <span>3:04:36 pm</span> / <span>00:00:10:735</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-pass">HomePage_shoutOutFromCustomers</h5>
+<span class='badge badge-success'>03.29.2023 3:04:36 pm</span>
+<span class='badge badge-danger'>03.29.2023 3:04:46 pm</span>
+<span class='badge badge-default'>00:00:10:735</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=14</span>
+<span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
+<span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
+</div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>3:04:46 pm</td>
+        <td>
+          Pass Test case is: HomePage_shoutOutFromCustomers
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="pass" test-id="15"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">TitleVerification</p>
+            <p class="text-sm">
+              <span>3:04:47 pm</span> / <span>00:00:08:700</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-pass">TitleVerification</h5>
+<span class='badge badge-success'>03.29.2023 3:04:47 pm</span>
+<span class='badge badge-danger'>03.29.2023 3:04:55 pm</span>
+<span class='badge badge-default'>00:00:08:700</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=15</span>
+<span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
+<span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
+</div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>3:04:55 pm</td>
+        <td>
+          Pass Test case is: TitleVerification
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+<div class="test-content scrollable">
+<div class="test-content-tools">
+<ul><li><a class="back-to-test" href="#"><i class="fa fa-arrow-left"></i></a></li></ul>
+</div>
+<div class="test-content-detail"><div class="detail-body"></div></div>
+</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+<script src="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@d6562a79075e061305ccfdb82f01e5e195e2d307/spark/js/spark-script.js"></script>
+<script type="text/javascript"></script></body>
+</html>

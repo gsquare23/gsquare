@@ -14,6 +14,7 @@ import com.dotKonnekt.pages.CheckoutPage;
 import com.dotKonnekt.pages.LoginPage;
 import com.dotKonnekt.pages.ProductPage;
 import com.dotKonnekt.pages.RecipePageFinal;
+import com.dotKonnekt.pages.SearchPage;
 import com.dotKonnekt.utility.Log;
 
 public class CheckoutPageTest extends BaseClass {
@@ -25,6 +26,7 @@ public class CheckoutPageTest extends BaseClass {
 	CheckoutPage checkoutPage;
 	CommonPagedetails commonPagedetails;
 	ProductPage productPage;
+	SearchPage searchPage;
 	
 	@Test(dataProvider = "CheckoutPage", dataProviderClass = DataProviders.class,enabled = true, groups = "NotLoggedIn") 
 	public void TitleVerification(String page, String title, String browser, String url) {
@@ -112,20 +114,55 @@ public class CheckoutPageTest extends BaseClass {
 	}
 	
 	
-//Organic Aloe Vera Gel from freshly
-	@Test(dataProvider = "CheckoutPage", dataProviderClass = DataProviders.class, enabled = true, groups = "NotLoggedIn")
+//Lotus Antioxidant Night Moisturizer
+	@Test(dataProvider = "CheckoutPage1", dataProviderClass = DataProviders.class, enabled = true, groups = "NotLoggedIn")
 	public void CheckoutPage_GuestUseraddItemTotheCartforShopTab(String page, String title, String browser, String url) throws InterruptedException {
 		Log.startTestCase("-----------CheckoutPage_GuestUseraddItemTotheCart    Starts---------");
 		checkoutPage = new CheckoutPage();
 		productPage = new ProductPage();
 		homePage = new HomePage();
+		searchPage = new SearchPage();
 		launchApp_EB(browser, prop.getProperty("HomePageurl"));
-		homePage.NewsletterPopup();
-		checkoutPage.validateSeachFunctionalityForShopTab("black","Keyboard","Search Page");
-		checkoutPage.ShopProducts();
+		homePage.NewsletterPopup__Alert();
+		searchPage.validateSeachFunctionalityForShopTab("jojoba","Mouse","Search Page");
+		searchPage.ShopProducts();
 		checkoutPage.selectAProduct();
 		checkoutPage.availabiltyStock();
+		checkoutPage.CheckoutPageStatus(); 
+		checkoutPage.contactInfoGuest();
+		checkoutPage.shippingAddressGuest();
+		checkoutPage.quantityVerification();
+		checkoutPage.shippingMethod();
+		
+		
+		
 		Log.endTestCase("-----------CheckoutPage_GuestUseraddItemTotheCart    Ends---------");
+	}
+	
+	@Test(dataProvider = "CheckoutPage1", dataProviderClass = DataProviders.class, enabled = true, groups = "NotLoggedIn")
+	public void CheckoutPage_LoggedUseraddItemTotheCartforShopTab(String page, String title, String browser, String url) throws InterruptedException {
+		Log.startTestCase("----CheckoutPage_LoggedUseraddItemTotheCartforShopTab    Starts---------");
+		checkoutPage = new CheckoutPage();
+		productPage = new ProductPage();
+		homePage = new HomePage();
+		loginPage = new LoginPage();
+		launchApp_EB(browser, prop.getProperty("HomePageurl"));
+		homePage.NewsletterPopup__Alert();
+		loginPage.loginSetup1(prop.getProperty("Username"), prop.getProperty("Password"));
+		homePage.onlyNewsLetter();
+		searchPage.validateSeachFunctionalityForShopTab("jojoba","Mouse","Search Page");
+		searchPage.ShopProducts();
+		checkoutPage.selectAProduct();
+		checkoutPage.availabiltyStock();
+		checkoutPage.CheckoutPageStatus(); 
+		checkoutPage.contactInfoLogged();
+		checkoutPage.shippingAddressLogged();
+		checkoutPage.quantityVerification();
+		checkoutPage.shippingMethod();
+		
+		
+		
+		Log.endTestCase("-----CheckoutPage_LoggedUseraddItemTotheCartforShopTab    Ends---------");
 	}
 	
 	@Test(dataProvider = "CheckoutPage", dataProviderClass = DataProviders.class, enabled = true, groups = "NotLoggedIn")
@@ -134,9 +171,10 @@ public class CheckoutPageTest extends BaseClass {
 		checkoutPage = new CheckoutPage();
 		homePage = new HomePage();
 		launchApp_EB(browser, prop.getProperty("HomePageurl"));
-		homePage.NewsletterPopup();
-		checkoutPage.SearchFunctionalityForArticleTab("aloe","Keyboard","Search Page");
-		//checkoutPage.ShopProducts();
+		homePage.NewsletterPopup__Alert();
+		searchPage.validateSeachFunctionalityForShopTab("moisturizer","Keyboard","Search Page");
+		//checkoutPage.SearchFunctionalityForArticleTab("moisturizer","Keyboard","Search Page");
+		//checkoutPage.articlesPresence();
 		Log.endTestCase("-----------CheckoutPage_GuestUseraddItemTotheCart    Ends---------");
 	}
 	
@@ -146,10 +184,24 @@ public class CheckoutPageTest extends BaseClass {
 	  url) throws InterruptedException {
 		Log.startTestCase("-----------CheckoutPage_GuestUseraddItemTotheCart    Starts---------"); 
 		checkoutPage = new CheckoutPage(); 
-		launchApp_EB(browser, url);
+		launchApp_V1(browser, url);
 	  //checkoutPage.SearchFunctionalityForArticleTab("aloe","Keyboard","Search Page");
 		//checkoutPage.CheckoutPageStatus(); 
-		checkoutPage.contactInfo();
+		checkoutPage.contactInfoGuest();
+		Log.endTestCase("-----------CheckoutPage_GuestUseraddItemTotheCart    Ends---------"); 
+		}
+	
+	
+
+	@Test(dataProvider = "CheckoutPage", dataProviderClass = DataProviders.class,enabled = true, groups = "NotLoggedIn") 
+	public void CheckoutPage_Shipping(String page, String title, String browser, String
+	  url) throws InterruptedException {
+		Log.startTestCase("-----------CheckoutPage_GuestUseraddItemTotheCart    Starts---------"); 
+		checkoutPage = new CheckoutPage(); 
+		launchApp_V1(browser, url); 
+		checkoutPage.contactInfoGuest();
+		checkoutPage.shippingAddressGuest();
+		//checkoutPage.shippingMethod();
 		Log.endTestCase("-----------CheckoutPage_GuestUseraddItemTotheCart    Ends---------"); 
 		}
 	 

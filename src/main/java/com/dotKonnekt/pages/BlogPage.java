@@ -262,11 +262,22 @@ public class BlogPage extends BaseClass{
 	 */
 	String recipeVideo = "//div[@class='MuiBox-root css-1cbkcwo']";
 	public void blogVideoSection() throws InterruptedException {
+		WebElement i = getDriver().findElement(By.tagName("body"));
+		//System.out.println(i.getText());
+		//if(i.getText().contains("Recipe Video")) {
+		
+		WebElement element = getDriver().findElement(By.tagName("body"));
+		System.out.println(element.getText());
 		WebElement recipeVideos = getDriver().findElement(By.xpath(recipeVideo));
 		Action.scrollByVisibilityOfElement(getDriver(), recipeVideos);
 		System.out.println(Action.isDisplayed(getDriver(), recipeVideos));
 		Action.click(getDriver(), recipeVideos);
 		Thread.sleep(5000);
+		//}
+		/*
+		 * else { System.out.println("Blog Video is not present");
+		 * Assert.assertTrue(false, "Blog Video is not present"); }
+		 */
 	}
 	
 	String productName2 = "//div[@class='MuiTypography-root MuiTypography-h5 css-qla7e7'][1]";
@@ -392,7 +403,7 @@ public class BlogPage extends BaseClass{
 			String productname = "("+ allproduct + "/div[2]/div[2])" +"["+ count + "]"; 
 			WebElement ProductName1 = getDriver().findElement(By.xpath(productname));
 			Action.scrollByVisibilityOfElement(getDriver(), ProductName1);
-			String PName = ProductName1.getText();
+			String PName = ProductName1.getText().replaceAll("[.]", "");
 			System.out.println(PName);
 			Assert.assertTrue(ProductName1.isDisplayed());
 			
@@ -411,6 +422,7 @@ public class BlogPage extends BaseClass{
 			WebElement QuickView = getDriver().findElement(By.xpath(quickView));
 			if(QuickView.isDisplayed()) {
 				Action.click(getDriver(), QuickView);
+				Thread.sleep(2000);
 				String quickPName = "//div[@class='MuiTypography-root MuiTypography-body1 css-vcbw66']";
 				WebElement QuickPName = getDriver().findElement(By.xpath(quickPName));
 				softAssert.assertTrue(QuickPName.getText().contains(PName), "Quick view Link does not contain same name as product Tile");
@@ -490,7 +502,7 @@ public class BlogPage extends BaseClass{
 				boolean result = Action.isDisplayed(getDriver(), addToCartIcon);
 				String elementTxt = addToCartIcon.getText();
 				if (elementTxt.equalsIgnoreCase("ADD TO CART") && result){
-					Assert.assertTrue(addToCartIcon.isEnabled(), "Out of Stock button is not enabled");
+					Assert.assertTrue(addToCartIcon.isEnabled(), "ADD TO CART button is not enabled");
 					System.out.println("AddTOCart is enabled");
 					Log.info("Successfully verified AddToCart Message");
 				}

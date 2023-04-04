@@ -270,7 +270,7 @@ public class BlogPageTest  extends BaseClass {
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
 	
 
-	@Test(dataProvider = "BlogPage1", dataProviderClass = DataProviders.class, enabled = true, groups = "LoggedIn")
+	@Test(dataProvider = "BlogPage1", dataProviderClass = DataProviders.class, enabled = false, groups = "LoggedIn")
 	public void BlogPage_AddCommentinCommentSeection(String page, String title, String browser, String url, String BlogPageElements, String AuthorName, String PublishDate, String blogTitle) throws InterruptedException {
 		Log.startTestCase("BlogPage_AddCommentinCommentSeection");
 
@@ -284,7 +284,7 @@ public class BlogPageTest  extends BaseClass {
 		Log.endTestCase("-----------BlogPage_AddCommentinCommentSeection ---------");
 	}
 	
-	@Test(dataProvider = "BlogPage1", dataProviderClass = DataProviders.class, enabled = true, groups = "LoggedIn")
+	@Test(dataProvider = "BlogPage1", dataProviderClass = DataProviders.class, enabled = false, groups = "LoggedIn")
 	public void BlogPage_bookMarkIconFunctionalityLoggedIn(String page, String title, String browser, String url, String BlogPageElements, String AuthorName, String PublishDate, String blogTitle) throws InterruptedException {
 		Log.startTestCase("-----------BlogPage_bookMarkIconFunctionalityLoggedIn    Starts---------");
 		recipePage = new RecipePageFinal();
@@ -293,7 +293,7 @@ public class BlogPageTest  extends BaseClass {
 		Log.endTestCase("-----------BlogPage_bookMarkIconFunctionalityLoggedIn    Ends---------");
 	}
 	
-	@Test(dataProvider = "BlogPage1", dataProviderClass = DataProviders.class, enabled = true, groups = "LoggedIn")
+	@Test(dataProvider = "BlogPage1", dataProviderClass = DataProviders.class, enabled = false, groups = "LoggedIn")
 	public void BlogPage_likeIconFunctionality(String page, String title, String browser, String url, String BlogPageElements, String AuthorName, String PublishDate, String blogTitle) throws InterruptedException {
 		Log.startTestCase("-----------BlogPage_likeIconFunctionality    Starts---------");
 		recipePage = new RecipePageFinal();

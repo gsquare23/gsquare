@@ -8,6 +8,7 @@ import java.util.Properties;
 import org.apache.log4j.xml.DOMConfigurator;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.UnexpectedAlertBehaviour;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriver.Options;
@@ -81,6 +82,8 @@ public class BaseClass {
 		else if (browsername.contains("Firefox")) {
 			WebDriverManager.firefoxdriver().setup();
 			driver.set(new FirefoxDriver());
+			Dimension d = new Dimension(1280, 587);
+			getDriver().manage().window().setSize(d);
 
 		} 
 		else if (browsername.contains("Headless")) {
@@ -112,7 +115,7 @@ public class BaseClass {
 		//Thread.sleep(5000);
 	}
 	
-	public void launchApp_EB(String browsername, String Url) {
+	public void launchApp_EB(String browsername, String Url) throws InterruptedException {
 
 		System.out.println(browsername);
 		// String browsername = prop.getProperty("browser");
@@ -136,6 +139,9 @@ public class BaseClass {
 		else if (browsername.contains("Firefox")) {
 			WebDriverManager.firefoxdriver().setup();
 			driver.set(new FirefoxDriver());
+			Dimension d = new Dimension(1280, 587);
+			getDriver().manage().window().setSize(d);
+			Thread.sleep(2000);
 		} 
 		else if (browsername.contains("Headless")) {
 			WebDriverManager.chromedriver().setup();

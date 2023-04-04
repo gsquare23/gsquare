@@ -11,47 +11,18 @@
       </run>
     </groups>
     <classes>
-      <class name="com.dotKonnekt.tests.RecipePageTest">
+      <class name="com.dotKonnekt.tests.HomePageTest">
         <methods>
-          <include name="RecipePage_NutritionlistVerification" invocation-numbers="1"/>
-          <include name="teardown"/>
-          <include name="flush"/>
-          <include name="loadConfig"/>
-          <include name="RecipePage_shopTheIngredientsVeriffication" invocation-numbers="0 1 2"/>
-          <include name="RecipePage_RecipeVideoverification" invocation-numbers="0 1"/>
-        </methods>
-      </class> <!-- com.dotKonnekt.tests.RecipePageTest -->
-      <class name="com.dotKonnekt.tests.CategoryPageTest">
-        <methods>
-          <include name="subTabsVerification" invocation-numbers="1"/>
-          <include name="BreadCrumbVerification" invocation-numbers="0 1"/>
-          <include name="CategoryPage_NewArrivalSection" invocation-numbers="0"/>
-          <include name="imageVerification" invocation-numbers="0"/>
-          <include name="CategoryPage_categoryElements" invocation-numbers="1"/>
-          <include name="flush"/>
-          <include name="loadConfig"/>
-          <include name="teardown"/>
-        </methods>
-      </class> <!-- com.dotKonnekt.tests.CategoryPageTest -->
-      <class name="com.dotKonnekt.tests.ProductPageTest">
-        <methods>
-          <include name="ProductPage_ReadMorefunctionality" invocation-numbers="0 1 2"/>
-          <include name="ProductPage_FAQSections" invocation-numbers="0"/>
-          <include name="ProductPage_ProductDetailVerification" invocation-numbers="0 1 2"/>
-          <include name="ProductPage_weFoundOtherProducts" invocation-numbers="0"/>
-          <include name="flush"/>
-          <include name="loadConfig"/>
+          <include name="HomePage_endToEndGuestScenarioByClickingQuickViewGuestUSer" invocation-numbers="0"/>
+          <include name="HomePage_SendAMessageFunctionality" invocation-numbers="0"/>
           <include name="tearDown"/>
-        </methods>
-      </class> <!-- com.dotKonnekt.tests.ProductPageTest -->
-      <class name="com.dotKonnekt.tests.BlogPageTest">
-        <methods>
-          <include name="teardown"/>
-          <include name="BlogPage_recipeImage" invocation-numbers="0"/>
+          <include name="HomePage_endToEndGuestScenarioByClickingProductTileGuestUSer" invocation-numbers="0"/>
+          <include name="HomePage_endToEndGuestScenarioByClickingProductTileLoggedIn" invocation-numbers="0"/>
           <include name="flush"/>
           <include name="loadConfig"/>
+          <include name="HomePage_endToEndGuestScenarioByClickingProductCartIconGuestUSer" invocation-numbers="0"/>
         </methods>
-      </class> <!-- com.dotKonnekt.tests.BlogPageTest -->
+      </class> <!-- com.dotKonnekt.tests.HomePageTest -->
     </classes>
   </test> <!-- NotLoggedIn(failed) -->
 </suite> <!-- Failed suite [Suite] -->
